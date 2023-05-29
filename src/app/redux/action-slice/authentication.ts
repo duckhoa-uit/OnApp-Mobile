@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SLICE_NAME } from '@config/type';
-import { AuthenticationState } from '@model/authentication';
+import { AuthenticationState, FormLoginType } from '@model/authentication';
 import * as Action from '@redux-action-type/authentication';
 import { createAction, createSlice } from '@reduxjs/toolkit';
 
@@ -18,7 +17,11 @@ const authenticationSlice = createSlice({
 
 const login = createAction(
   Action.LOGIN,
-  (body: any, onSucceeded: () => void, onFailure: (msg: string) => void) => ({
+  (
+    body: FormLoginType,
+    onSucceeded: () => void,
+    onFailure: (msg: string) => void,
+  ) => ({
     payload: {
       body,
       onSucceeded,

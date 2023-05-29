@@ -94,6 +94,13 @@
             ReferencedContainer = "container:DocterCallRebuild.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "EXTRA_PACKAGER_ARGS"
+            value = "--reset-cache"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

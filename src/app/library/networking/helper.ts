@@ -63,9 +63,7 @@ export const handleErrorAxios = <T = Record<string, unknown>>(
     if (error.response.status === RESULT_CODE_PUSH_OUT) {
       return handleErrorApi(RESULT_CODE_PUSH_OUT) as unknown as ResponseBase<T>;
     } else {
-      return handleErrorApi(
-        error.response.status,
-      ) as unknown as ResponseBase<T>;
+      return handleErrorApi(error.response) as unknown as ResponseBase<T>;
     }
   }
 
