@@ -1,0 +1,15 @@
+export default ColorPalette = Object.freeze({
+  PRIMARY: '#D92659',
+  PRIMARY_LIGHT: '#DA576F',
+  SECONDARY: '#52D1C6',
+  TEXT_PRIMARY: '#1F2121',
+  TEXT_SECONDARY: '#ADADAD',
+  INPUT_PLACEHOLDER: '#555',
+  INPUT_BORDER: '#EAEBEC',
+  GRAY: '#555',
+  BG_BOX: '#E8F3F1',
+  BACKGROUND: '#E5E5E5',
+  WHITE: '#fff',
+  GREEN_NEON: '#52D1C6',
+  STAR: '#FFC817'
+});

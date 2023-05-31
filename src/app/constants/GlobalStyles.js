@@ -1,0 +1,8 @@
+export default GlobalStyles = Object.freeze({
+  BORDER_RADIUS: 8,
+  INPUT_RADIUS: 20,
+  PADDING_DEFAULT: 20,
+  FONT_SIZE: 14,
+  FONT_SIZE_SECONDARY: 12,
+  BOTTOM_TAB_BAR_HEIGHT: 80
+});

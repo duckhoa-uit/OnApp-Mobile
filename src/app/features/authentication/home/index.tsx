@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
-import { TextInput } from 'react-native';
-
+import { TextInput, TouchableOpacity, View } from 'react-native';
+import {Image } from 'react-native';
 import isEqual from 'react-fast-compare';
 
 import { Block, Icon, Screen, Text } from '@components';
 import { useTheme } from '@theme';
 
 import { useHomeStyle } from './style';
-
+import { MakeAppointment } from '../appointment/screens/MakeAppointment';
 const HomeComponent = () => {
   const theme = useTheme();
 
@@ -36,7 +36,22 @@ const HomeComponent = () => {
               console.log(text);
             }}
           />
+          <View>
+          <TouchableOpacity
+              style={[styles.redBox, { marginRight: 25 }]}
+              // onPress={() => {this.props.navigation.navigate('MakeAppointment')}}
+            >
+              <View style={styles.whiteBox}>
+                <Image
+                  style={styles.coverImg}
+                  source={require("@assets/image/source/doctor.png")}
+                />
+              </View>
+              <Text style={styles.bigButtonText}>Tham vấn tâm lý</Text>
+            </TouchableOpacity>
+          </View>
         </Block>
+        
       </Screen>
     </Block>
   );

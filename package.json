@@ -20,7 +20,8 @@
     "android:dev": "npx ts-node scripts/android.ts run env/.dev devDebug",
     "android:release": "npx ts-node scripts/android.ts run env/.dev devRelease",
     "fastlane:dev": "npx ts-node scripts/fastlane.ts appcenter_and_TF_build env/.dev dev",
-    "fastlane:code-push-dev": "npx ts-node scripts/fastlane.ts code_push env/.dev dev"
+    "fastlane:code-push-dev": "npx ts-node scripts/fastlane.ts code_push env/.dev dev",
+    "test:ci": "cross-env CI=true react-scripts --watchAll=false test"
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
