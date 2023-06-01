@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
-import GlobalStyles from '@constants/GlobalStyles';
-import ColorPalette from '@constants/colors';
+
 import { useTheme } from '@theme';
 
 export const useHomeStyle = () => {
@@ -50,8 +49,8 @@ export const useHomeStyle = () => {
           flex: 1,
           height: 188,
           flexDirection: 'column',
-          backgroundColor: ColorPalette.PRIMARY_LIGHT,
-          borderRadius: GlobalStyles.BORDER_RADIUS,
+          backgroundColor: '#FF5F5F',
+          borderRadius: 10,
           alignItems: 'center',
           padding: 14,
         },
@@ -60,15 +59,15 @@ export const useHomeStyle = () => {
           height: 110,
           marginTop: 14,
           backgroundColor: '#F3F8FA',
-          borderRadius: GlobalStyles.BORDER_RADIUS,
+          borderRadius: 10,
           alignItems: 'center',
           justifyContent: 'center',
-          padding: 6
+          padding: 6,
         },
         coverImg: {
           height: 100,
           width: 100,
-          objectFit: 'cover'
+          objectFit: 'cover',
         },
         bigButtonText: {
           fontSize: 12,
@@ -77,7 +76,7 @@ export const useHomeStyle = () => {
           width: '100%',
           height: '100%',
           textAlign: 'center',
-          marginTop: 16
+          marginTop: 16,
         },
       }),
     [theme.colors.primary],
