@@ -45,7 +45,7 @@ const run = (props: { platform: NodeJS.Platform; envPath: string }) => {
   uninstallOldApp(envJson.BUNDLE_IDENTIFIER);
 
   execSync(
-    `npx react-native run-ios --scheme ${envJson.APP_PLACEHOLDER_NAME}-${envJson.APP_ENV} --udid=${udid}`,
+    `APP_ENV=Dev npx react-native run-ios --scheme ${envJson.APP_PLACEHOLDER_NAME}-${envJson.APP_ENV} --udid=${udid}`,
     { stdio: 'inherit' },
   );
 };

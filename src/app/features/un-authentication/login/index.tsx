@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Image as RNImage, TouchableOpacity } from 'react-native';
+import { Image as RNImage, TouchableOpacity } from 'react-native';
 
 import { images } from '@assets/image';
 import { dispatch } from '@common';
@@ -7,7 +7,7 @@ import { Block, Screen, Text } from '@components';
 import { FormLoginType } from '@model/authentication';
 import { navigateScreen } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
-import { appActions } from '@redux-slice';
+import { appActions, authenticationActions } from '@redux-slice';
 
 import { FormLogin } from './components/form-login';
 import { useLoginStyle } from './style';
@@ -17,9 +17,24 @@ export const Login = () => {
 
   // function
   const handleSubmit = (data: FormLoginType) => {
-    dispatch(appActions.setAppTheme('default'));
+    dispatch(appActions.startProcess());
 
-    Alert.alert(JSON.stringify(data));
+    const payload: FormLoginType = {
+      email: data.email.toLowerCase(),
+      password: data.password,
+    };
+
+    dispatch(
+      authenticationActions.login(
+        payload,
+        () => {
+          dispatch(appActions.endProcess());
+        },
+        () => {
+          dispatch(appActions.endProcess());
+        },
+      ),
+    );
   };
 
   // render

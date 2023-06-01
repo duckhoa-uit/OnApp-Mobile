@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Alert, Platform } from 'react-native';
 
+import { showSnack } from '@components';
 import { appActions } from '@redux-slice';
 import { remove } from '@storage';
 import { I18nKeys } from '@utils/i18n/locales';
 import { translate } from '@utils/i18n/translate';
+import { AxiosResponse } from 'axios';
 
 import { STORAGE_KEY_TOKEN } from '../constant';
 import { dispatch } from '../redux';
@@ -48,6 +50,8 @@ export const validResponse = (
 ): response is ResponseBase<any, true> => {
   if (!response.status) {
     // TODO: handle error
+    showSnack({ msg: response.msg ?? '', type: 'error' });
+
     return false;
   }
 
@@ -71,22 +75,28 @@ export const logout = () => {
   remove(STORAGE_KEY_TOKEN);
 };
 
-export const handleErrorApi = (status: number) => {
-  const result = { status: false, code: status, msg: '' };
+export const handleErrorApi = (response: number | AxiosResponse) => {
+  const result = { status: false, code: response, msg: '' };
 
-  if (status > 505) {
+  if (!(typeof response === 'number') && response.data.message) {
+    result.msg = response.data.message;
+
+    return result;
+  }
+
+  if (response > 505) {
     result.msg = translate('error:server_error');
 
     return result;
   }
 
-  if (status < 500 && status >= 418) {
+  if (response < 500 && response >= 418) {
     result.msg = translate('error:error_on_request');
 
     return result;
   }
 
-  result.msg = translate(('error:' + status) as I18nKeys);
+  result.msg = translate(('error:' + response) as I18nKeys);
 
   return result;
 };

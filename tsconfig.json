@@ -47,8 +47,8 @@
       "@listener": ["./src/app/common/redux/listener.ts"],
       "@animated": ["./src/app/common/animated/index"],
       "@config/*": ["./src/app/config/*"],
-      "@constants/*": ["./src/app/constants/*"],
       "@features/*": ["./src/app/features/*"],
+      "@constants/*": ["./src/app/constants/*"],
       "@components": ["./src/app/library/components/index"],
       "@components/*": ["./src/app/library/components/*"],
       "@utils/*": ["./src/app/library/utils/*"],
@@ -68,6 +68,7 @@
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     "typeRoots": [
       "declare",
+      "./node_modules/@types",
       "src/index.d.ts"
     ] /* List of folders to include type definitions from. */,
     // "types": [],                           /* Type declaration files to be included in compilation. */
@@ -93,8 +94,4 @@
     "jest.config.js",
     "scripts"
   ],
-  "include": [
-    "./src/**/*",
-    "./src/index.d.ts"
-  ]
 }

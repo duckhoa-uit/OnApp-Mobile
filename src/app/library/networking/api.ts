@@ -1,7 +1,7 @@
 const API_VERSION = '/api/v1/';
 
 const ApiEndPoint = {
-  LOGIN: '',
+  LOGIN: 'auth/login',
   REFRESH_TOKEN: '',
 } as const;
 
@@ -19,6 +19,16 @@ const configApi = () => {
 
 type ApiConstantsType<T> = {
   [a in keyof T]: string;
+};
+
+export type ApiErrorResponse = {
+  status: 'success' | 'fail';
+  message: string;
+};
+
+export type ApiBaseResponse<T> = {
+  status: 'success';
+  data: T;
 };
 
 export const ApiConstants = configApi() as ApiConstantsType<typeof ApiEndPoint>;

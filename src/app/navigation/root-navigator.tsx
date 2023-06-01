@@ -28,7 +28,7 @@ export const RootNavigation = () => {
   // render
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-      {!token === undefined ? (
+      {token === undefined ? (
         <RootStack.Group
           screenOptions={{
             freezeOnBlur: true,
