@@ -48,3 +48,6 @@ Build with: [rn-ml](https://github.com/MasonLe2497/cli-tools)
 - Run: ``` yarn app-icon ``` or ``` yarn app-icon:dev ```
   - Android: auto change flavor script
   - IOS: Change ASSETCATALOG_COMPILER_APPICON_NAME to your respective App Icon Assets (in respective env file)
+
+node_modules/react-native-reanimated/src/reanimated2/initializers.ts
+line 156: const capturableConsole = console;

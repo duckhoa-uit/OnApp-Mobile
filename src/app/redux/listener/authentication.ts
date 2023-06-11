@@ -1,6 +1,7 @@
 import { STORAGE_KEY_TOKEN, validResponse } from '@common';
 import { takeLatestListeners } from '@listener';
 import { LoginApiResponse } from '@model/authentication';
+import { UserApiGetResponse } from '@model/user';
 import { ApiConstants, NetWorkService } from '@networking';
 import { saveString } from '@utils/storage';
 
@@ -11,8 +12,6 @@ takeLatestListeners(true)({
   actionCreator: authenticationActions.login,
   effect: async (action, listenerApi) => {
     const { body } = action.payload;
-
-    console.log({ body });
 
     await listenerApi.delay(1000);
 
@@ -32,6 +31,20 @@ takeLatestListeners(true)({
       saveString(STORAGE_KEY_TOKEN, token);
 
       listenerApi.dispatch(appActions.setToken(token));
+
+      const userResp = await NetWorkService.Get<UserApiGetResponse>({
+        url: ApiConstants.GET_ME,
+      });
+
+      if (!userResp) {
+        return;
+      }
+
+      if (validResponse(userResp)) {
+        const userData = userResp.data.data;
+
+        listenerApi.dispatch(appActions.setAppProfile(userData));
+      }
     }
   },
 });

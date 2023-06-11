@@ -34,7 +34,7 @@ export const Text = ({
   lineHeight,
   fontWeight,
   fontFamily,
-  colorTheme,
+  colorTheme = 'text',
   t18nOptions,
   textTransform,
   letterSpacing,

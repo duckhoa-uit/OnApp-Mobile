@@ -1,3 +1,6 @@
+import { TimeFormat } from '@model/app';
+import { User } from '@model/user';
+import { RouteProp } from '@react-navigation/native';
 import { StackScreenProps as RNStackScreenProps } from '@react-navigation/stack';
 
 export enum APP_SCREEN {
@@ -7,6 +10,15 @@ export enum APP_SCREEN {
 
   AUTHORIZE = 'AUTHORIZE',
   HOME = 'HOME',
+
+  HOME_STACK = 'HOME_STACK',
+  MESSAGE_STACK = 'MESSAGE_STACK',
+  CALENDAR_STACK = 'CALENDAR_STACK',
+  PROFILE_STACK = 'PROFILE_STACK',
+
+  CONSULTER_LIST = 'CONSULTER_LIST',
+  CONSULTER_DETAILS = 'CONSULTER_DETAILS',
+  CONFIRM_BOOKING = 'CONFIRM_BOOKING',
 }
 
 export type RootStackParamList = {
@@ -15,7 +27,22 @@ export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;
   [APP_SCREEN.AUTHORIZE]: undefined;
   [APP_SCREEN.HOME]: undefined;
+  [APP_SCREEN.CONSULTER_LIST]: undefined;
+  [APP_SCREEN.CONSULTER_DETAILS]: {
+    consulter: User;
+  };
+  [APP_SCREEN.CONFIRM_BOOKING]: {
+    consulter: User;
+    type: number;
+    duration: number;
+    date: string;
+    slug: string;
+    timeFormat: TimeFormat;
+  };
 };
 
 export type StackScreenProps<T extends keyof RootStackParamList> =
   RNStackScreenProps<RootStackParamList, T>;
+
+export type RootRouteProps<RouteName extends keyof RootStackParamList> =
+  RouteProp<RootStackParamList, RouteName>;

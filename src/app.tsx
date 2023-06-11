@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { isIos } from '@common';
 import { PortalProvider } from '@gorhom/portal';
 import { AppContainer } from '@navigation/app-navigation';
+import { APIProvider } from '@networking';
 import { store } from '@store/store';
 import I18n from '@utils/i18n/i18n';
 
@@ -63,17 +64,19 @@ const styles = StyleSheet.create({
 export const MyApp = () => {
   return (
     <SafeAreaProvider>
-      <Provider store={store}>
-        <I18nextProvider i18n={I18n}>
-          <Suspense fallback={null}>
-            <PortalProvider>
-              <GestureHandlerRootView style={styles.root}>
-                <AppContainer />
-              </GestureHandlerRootView>
-            </PortalProvider>
-          </Suspense>
-        </I18nextProvider>
-      </Provider>
+      <APIProvider>
+        <Provider store={store}>
+          <I18nextProvider i18n={I18n}>
+            <Suspense fallback={null}>
+              <PortalProvider>
+                <GestureHandlerRootView style={styles.root}>
+                  <AppContainer />
+                </GestureHandlerRootView>
+              </PortalProvider>
+            </Suspense>
+          </I18nextProvider>
+        </Provider>
+      </APIProvider>
     </SafeAreaProvider>
   );
 };

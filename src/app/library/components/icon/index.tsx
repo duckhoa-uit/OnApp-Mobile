@@ -35,10 +35,10 @@ export const Icon = ({
       onPress={onPress}
     >
       <FastImage
-        style={style}
-        tintColor={colorTheme ? theme.colors[colorTheme] : color}
         resizeMode={resizeMode}
         source={icons[icon]}
+        style={style}
+        tintColor={colorTheme ? theme.colors[colorTheme] : color}
       />
     </TouchableOpacity>
   );
