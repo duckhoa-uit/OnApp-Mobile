@@ -25,6 +25,8 @@
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
     "@hookform/resolvers": "^3.0.0",
+    "@react-native-community/cli": "^11.3.3",
+    "@react-native-community/cli-platform-android": "^11.3.3",
     "@react-native-community/netinfo": "^9.3.8",
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/bottom-tabs": "^6.5.7",
@@ -44,6 +46,7 @@
     "react-native": "0.71.6",
     "react-native-blurhash": "^1.1.10",
     "react-native-bootsplash": "^4.5.3",
+    "react-native-cli": "^2.0.1",
     "react-native-config": "^1.5.0",
     "react-native-dotenv": "^3.4.8",
     "react-native-fast-image": "^8.6.3",
