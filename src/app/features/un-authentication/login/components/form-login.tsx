@@ -29,10 +29,10 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
   // render
   return (
     <FormProvider {...formMethod}>
-      <Input<FormLoginType> name={'email'} label={'Email'} />
+      <Input<FormLoginType> autoFocus label={'Email'} name={'email'} />
       <Input<FormLoginType>
-        name={'password'}
         label={'Password'}
+        name={'password'}
         rightChildren={
           <Icon
             color="#777"
@@ -43,12 +43,12 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
         secureTextEntry={!showPassword}
       />
 
-      <Block paddingVertical={15} middle direction={'row'}>
+      <Block direction={'row'} middle paddingVertical={15}>
         <TouchableScale
-          onPress={onSubmitKey}
           containerStyle={styles.submitBtnContainer}
+          onPress={onSubmitKey}
         >
-          <Block padding={5} color={'#bbb'} style={styles.loginButton}>
+          <Block color={'#bbb'} padding={5} style={styles.loginButton}>
             <Text style={styles.loginText}>Đăng nhập</Text>
           </Block>
         </TouchableScale>

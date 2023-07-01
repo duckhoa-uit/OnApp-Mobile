@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
+import DatePicker from 'react-native-date-picker';
 
 import { Block, Icon, Text, TouchableScale } from '@components';
 import { Input } from '@components/form/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormRegisterType } from '@model/authentication';
 import { registerValidation } from '@validate/register';
+import { format } from 'date-fns';
 
 import { useRegisterStyle } from '../style';
 import { FormRegisterProps } from '../type';
 
 export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
   const styles = useRegisterStyle();
+
+  const [passwordCheck, setPasswordCheck] = useState(false);
+
+  const [date, setDate] = useState<Date>(new Date());
+
+  const [open, setOpen] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -23,17 +31,19 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
 
   // function
   const onSubmitKey = () => {
-    formMethod.handleSubmit(onSubmit)();
+    if (passwordCheck) {
+      formMethod.handleSubmit(onSubmit)();
+    }
   };
 
   // render
   return (
     <FormProvider {...formMethod}>
-      <Input<FormRegisterType> name={'email'} label={'Email'} />
-      <Input<FormRegisterType> name={'name'} label={'Họ tên'} />
+      <Input<FormRegisterType> label={'Email'} name={'email'} />
+      <Input<FormRegisterType> label={'Họ tên'} name={'name'} />
       <Input<FormRegisterType>
-        name={'password'}
         label={'Mật khẩu'}
+        name={'password'}
         rightChildren={
           <Icon
             color="#777"
@@ -43,13 +53,48 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         }
         secureTextEntry={!showPassword}
       />
+      <Input<FormRegisterType>
+        label={'Nhập lại mật khẩu'}
+        name={'password'}
+        rightChildren={
+          <Icon
+            color="#777"
+            icon={showPassword ? 'eye' : 'eyeClose'}
+            onPress={() => setShowPassword(!showPassword)}
+          />
+        }
+        secureTextEntry={!showPassword}
+      />
+      <Input<FormRegisterType>
+        label={'Ngày sinh'}
+        name={'date'}
+        onPressIn={() => {
+          setOpen(true);
+        }}
+        rightChildren={<Icon color="#777" icon={'calendar'} />}
+        value={format(date, 'dd/MM/yyyy').toString()}
+      />
+      <DatePicker
+        date={new Date()}
+        modal
+        mode="date"
+        onCancel={() => {
+          setOpen(false);
+        }}
+        onConfirm={date => {
+          setDate(date);
 
-      <Block paddingVertical={15} middle direction={'row'}>
+          setOpen(false);
+        }}
+        open={open}
+      />
+
+      <Block direction={'row'} middle paddingVertical={15}>
         <TouchableScale
-          onPress={onSubmitKey}
           containerStyle={styles.submitBtnContainer}
+          onPress={onSubmitKey}
         >
-          <Block padding={5} color={'#bbb'} style={styles.registerButton}>
+          <Block color={'#bbb'} padding={5} style={styles.registerButton}>
             <Text style={styles.registerText}>Đăng ký</Text>
           </Block>
         </TouchableScale>

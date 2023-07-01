@@ -1,11 +1,12 @@
 import { SLICE_NAME } from '@config/type';
 import { AppState } from '@model/app';
+import { User } from '@model/user';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ThemeType } from '@theme';
 
 const initialAppState: AppState = {
   internetState: true,
-  profile: {},
+  profile: null,
   token: undefined,
   /**
    * default true to load app
@@ -25,7 +26,7 @@ const appSlice = createSlice({
     setToken: (state, { payload }: PayloadAction<string>) => {
       state.token = payload;
     },
-    setAppProfile: (state, { payload }: PayloadAction<unknown>) => {
+    setAppProfile: (state, { payload }: PayloadAction<User>) => {
       state.profile = payload;
     },
     setAppTheme: (state, { payload }: PayloadAction<ThemeType>) => {
@@ -46,7 +47,7 @@ const appSlice = createSlice({
     logout: state => {
       state.token = undefined;
 
-      state.profile = {};
+      state.profile = null;
     },
   },
 });

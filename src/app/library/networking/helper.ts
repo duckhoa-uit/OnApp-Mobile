@@ -9,6 +9,10 @@ import {
   STATUS_TIME_OUT,
 } from '@config/api';
 import { ParamsNetwork } from '@config/type';
+import type {
+  GetNextPageParamFunction,
+  GetPreviousPageParamFunction,
+} from '@tanstack/react-query';
 import { translate } from '@utils/i18n/translate';
 import { AxiosError, AxiosResponse, Method } from 'axios';
 
@@ -99,3 +103,61 @@ export const handleParameter = <T extends ParamsNetwork>(
     params,
   };
 };
+
+// REACT-QUERY
+
+type KeyParams = {
+  [key: string]: any;
+};
+
+export interface PaginateQuery<T> {
+  results: T[];
+  count: number;
+  next: string | null;
+  previous: string | null;
+}
+
+export const DEFAULT_LIMIT = 10;
+
+export function getQueryKey<T extends KeyParams>(key: string, params?: T) {
+  return [key, ...(params ? [params] : [])];
+}
+
+// for infinite query pages  to flatList data
+export function normalizePages<T>(pages?: PaginateQuery<T>[]): T[] {
+  return pages
+    ? pages.reduce((prev: T[], current) => [...prev, ...current.results], [])
+    : [];
+}
+
+// a function that accept a url and return params as an object
+export function getUrlParameters(
+  url: string | null,
+): { [k: string]: string } | null {
+  if (url === null) {
+    return null;
+  }
+
+  const regex = /[?&]([^=#]+)=([^&#]*)/g;
+
+  const params: Record<string, string> = {};
+
+  let match;
+
+  while ((match = regex.exec(url))) {
+    if (match[1] !== null) {
+      // eslint-disable-next-line prefer-destructuring
+      params[match[1]] = match[2];
+    }
+  }
+
+  return params;
+}
+
+export const getPreviousPageParam: GetNextPageParamFunction<
+  PaginateQuery<unknown>
+> = page => getUrlParameters(page.previous)?.offset ?? null;
+
+export const getNextPageParam: GetPreviousPageParamFunction<
+  PaginateQuery<unknown>
+> = page => getUrlParameters(page.next)?.offset ?? null;

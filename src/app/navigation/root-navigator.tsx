@@ -3,12 +3,13 @@ import React, { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
 import { useSelector } from 'react-redux';
 
-import { Home } from '@features/authentication/home';
 import { Login } from '@features/un-authentication/login';
 import { Register } from '@features/un-authentication/register';
 import { APP_SCREEN, RootStackParamList } from '@navigation/screen-types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { selectAppToken } from '@redux-selector/app';
+
+import { MainScreen } from './authen';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,12 +37,15 @@ export const RootNavigation = () => {
             gestureEnabled: true,
           }}
         >
-          <RootStack.Screen name={APP_SCREEN.LOGIN} component={Login} />
-          <RootStack.Screen name={APP_SCREEN.REGISTER} component={Register} />
+          <RootStack.Screen component={Login} name={APP_SCREEN.LOGIN} />
+          <RootStack.Screen component={Register} name={APP_SCREEN.REGISTER} />
         </RootStack.Group>
       ) : (
         <RootStack.Group>
-          <RootStack.Screen name={APP_SCREEN.HOME} component={Home} />
+          <RootStack.Screen
+            component={MainScreen}
+            name={APP_SCREEN.AUTHORIZE}
+          />
         </RootStack.Group>
       )}
     </RootStack.Navigator>

@@ -2,8 +2,8 @@ import { Platform } from 'react-native';
 
 export const FontDefault = {
   primary: Platform.select({
-    ios: 'Roboto-Medium',
-    android: 'Roboto-Medium',
+    ios: 'Inter-Medium',
+    android: 'Inter-Medium',
   }) as string,
   secondary: Platform.select({
     ios: 'Roboto-Medium',

@@ -56,12 +56,12 @@ export const Example = () => {
 
   // render
   return (
-    <Block block paddingTop={0} paddingHorizontal={15}>
+    <Block block paddingHorizontal={15} paddingTop={0}>
       <Screen
+        backgroundColor={'transparent'}
         bottomInsetColor="transparent"
         scroll
         style={{ paddingVertical: 0, paddingHorizontal: 10 }}
-        backgroundColor={'transparent'}
       >
         <FormLogin onSubmit={handleSubmit} />
         <Block block height={150}>
@@ -72,29 +72,29 @@ export const Example = () => {
           />
         </Block>
 
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Action Sheet</Text>
           <Spacer width={10} />
           <Button onPress={handleShowAction}>
             <Text>Show Action</Text>
           </Button>
           <ActionSheet
+            option={[{ text: 'Option1' }, { text: 'Option2' }]}
             ref={_refAction}
             title={'Select'}
-            option={[{ text: 'Option1' }, { text: 'Option2' }]}
           />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Check box</Text>
           <Spacer width={10} />
           <CheckBox onToggle={setVisible} />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>OTP</Text>
           <Spacer width={10} />
           <Otp length={5} />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>DropDown</Text>
           <Spacer width={10} />
           <DropDown
@@ -104,48 +104,48 @@ export const Example = () => {
             ]}
           />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Select</Text>
           <Spacer width={10} />
           <Select data={[{ text: 'Option1' }, { text: 'Option2' }]} />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Helper text</Text>
           <Spacer width={10} />
           <Block>
-            <HelperText visible={visible} msg={'Helper text'} type={'error'} />
-            <HelperText visible={visible} msg={'Helper text'} type={'info'} />
+            <HelperText msg={'Helper text'} type={'error'} visible={visible} />
+            <HelperText msg={'Helper text'} type={'info'} visible={visible} />
           </Block>
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Divider</Text>
           <Spacer width={10} />
           <Divider />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Progress Circle</Text>
           <Spacer width={10} />
-          <Progress type={'circle'} progress={progress} />
+          <Progress progress={progress} type={'circle'} />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Progress Line</Text>
           <Spacer width={10} />
-          <Progress type={'linear'} progress={progress} />
+          <Progress progress={progress} type={'linear'} />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Radio Button</Text>
           <Spacer width={10} />
           <RadioButton />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Slider Linear</Text>
           <Spacer width={10} />
           <Block block>
             <Text>{sliderProgress}</Text>
-            <Slider type={'linear'} onChangeLinear={setSliderProgress} />
+            <Slider onChangeLinear={setSliderProgress} type={'linear'} />
           </Block>
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Slider Range</Text>
           <Spacer width={10} />
           <Block block>
@@ -154,13 +154,13 @@ export const Example = () => {
             </Text>
             <Spacer height={20} />
             <Slider
-              type={'range'}
-              onChangeRange={setSliderRangeProgress}
               initialRange={[0, 50]}
+              onChangeRange={setSliderRangeProgress}
+              type={'range'}
             />
           </Block>
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>TextInput</Text>
           <Spacer width={10} />
           <Block block>
@@ -168,22 +168,22 @@ export const Example = () => {
           </Block>
         </Block>
         <Spacer height={10} />
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>TouchableScale</Text>
           <Spacer width={10} />
           <TouchableScale>
-            <Block padding={5} color={'#bbb'}>
+            <Block color={'#bbb'} padding={5}>
               <Text>Press me!</Text>
             </Block>
           </TouchableScale>
         </Block>
         <Spacer height={10} />
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Switch IOS</Text>
           <Spacer width={10} />
           <Switch />
         </Block>
-        <Block paddingVertical={15} middle direction={'row'}>
+        <Block direction={'row'} middle paddingVertical={15}>
           <Text>Switch Android</Text>
           <Spacer width={10} />
           <Switch type={'android'} />

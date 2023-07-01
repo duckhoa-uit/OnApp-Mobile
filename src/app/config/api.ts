@@ -6,7 +6,7 @@ export const ERROR_NETWORK_CODE = -100;
 
 export const RESULT_CODE_PUSH_OUT = 401;
 
-export const TIME_OUT = 10000;
+export const TIME_OUT = 20000;
 
 export const STATUS_TIME_OUT = 'ECONNABORTED';
 

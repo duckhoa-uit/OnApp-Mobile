@@ -26,15 +26,12 @@ const SelectItemComponent = ({
 
   // render
   return (
-    <Button onPress={_onPress} activeOpacity={0.85}>
+    <Button activeOpacity={0.85} onPress={_onPress}>
       <View style={[[styles.container]]}>
         {customItem ? (
           customItem(item, index)
         ) : (
-          <Text
-            style={[styles.text, textItemStyle]}
-            children={item.text ?? ''}
-          />
+          <Text style={[styles.text, textItemStyle]}>{item.text ?? ''}</Text>
         )}
       </View>
     </Button>

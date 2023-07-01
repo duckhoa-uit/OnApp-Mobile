@@ -20,14 +20,14 @@ const RegisterComponent = () => {
 
   // render
   return (
-    <Block block justifyContent="center" paddingTop={0} paddingHorizontal={15}>
+    <Block block justifyContent="center" paddingHorizontal={15} paddingTop={0}>
       <Screen
+        backgroundColor={'transparent'}
         bottomInsetColor="transparent"
         style={{
           paddingVertical: 100,
           paddingHorizontal: 10,
         }}
-        backgroundColor={'transparent'}
       >
         <FormRegister onSubmit={handleSubmit} />
 

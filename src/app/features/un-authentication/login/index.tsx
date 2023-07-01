@@ -28,6 +28,8 @@ export const Login = () => {
       authenticationActions.login(
         payload,
         () => {
+          console.log('login thanh cong ne');
+
           dispatch(appActions.endProcess());
         },
         () => {
@@ -39,19 +41,19 @@ export const Login = () => {
 
   // render
   return (
-    <Block block justifyContent="center" paddingTop={0} paddingHorizontal={15}>
+    <Block block justifyContent="center" paddingHorizontal={15} paddingTop={0}>
       <Screen
+        backgroundColor={'transparent'}
         bottomInsetColor="transparent"
         style={{
           paddingVertical: 100,
           paddingHorizontal: 10,
         }}
-        backgroundColor={'transparent'}
       >
         <RNImage
-          style={styles.loginIcons}
-          source={images.logo}
           resizeMode={'cover'}
+          source={images.logo}
+          style={styles.loginIcons}
         />
         <FormLogin onSubmit={handleSubmit} />
 

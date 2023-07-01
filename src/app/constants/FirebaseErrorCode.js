@@ -9,5 +9,5 @@ export const FIREBASE_ERROR_CODE = Object.freeze({
   INVALID_PHOTO_URL: 'auth/invalid-photo-url',
   INVALID_PASSWORD: 'auth/invalid-password',
   TOKEN_REVOKED: 'auth/id-token-revoked',
-  TOKEN_EXPIRED: 'auth/id-token-expired'
+  TOKEN_EXPIRED: 'auth/id-token-expired',
 });

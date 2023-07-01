@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 
 export interface ParamsNetwork extends AxiosRequestConfig {
   url: string;
-  params?: Record<string, string | number>;
+  params?: Record<string, string | number | string[]>;
   path?: Record<string, string | number>;
   body?: Record<string, unknown>;
   controller?: AbortController;
@@ -12,6 +12,7 @@ export interface ParamsNetwork extends AxiosRequestConfig {
 export enum SLICE_NAME {
   APP = 'APP_',
   AUTHENTICATION = 'AUTHENTICATION_',
+  SLOT = 'SLOT_',
 }
 
 export type ValidateMessageObject = {

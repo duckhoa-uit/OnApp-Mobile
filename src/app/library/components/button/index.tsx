@@ -46,11 +46,11 @@ export const Button = (props: ButtonProps) => {
     >
       {children || (
         <Text
-          t18n={t18n}
-          text={text}
-          style={[stylesText[preset], textStyleOverride]}
           color={textColor}
           colorTheme={textColorTheme}
+          style={[stylesText[preset], textStyleOverride]}
+          t18n={t18n}
+          text={text}
         />
       )}
     </TouchableOpacity>

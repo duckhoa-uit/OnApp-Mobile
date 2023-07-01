@@ -11,5 +11,5 @@ export default ColorPalette = Object.freeze({
   BACKGROUND: '#E5E5E5',
   WHITE: '#fff',
   GREEN_NEON: '#52D1C6',
-  STAR: '#FFC817'
+  STAR: '#FFC817',
 });

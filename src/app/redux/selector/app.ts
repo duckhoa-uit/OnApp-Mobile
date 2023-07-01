@@ -14,3 +14,8 @@ export const selectAppToken = createDeepEqualSelector(
   (state: RootState) => state.app,
   app => app.token,
 );
+
+export const selectAppProfile = createDeepEqualSelector(
+  (state: RootState) => state.app,
+  app => app.profile,
+);

@@ -25,13 +25,13 @@ export const ListView = (props: ListViewProps) => {
   // render
   return (
     <FlatList
-      refreshControl={
-        canRefresh ? (
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        ) : undefined
-      }
       onEndReached={loadMore}
       onEndReachedThreshold={0.001}
+      refreshControl={
+        canRefresh ? (
+          <RefreshControl onRefresh={onRefresh} refreshing={refreshing} />
+        ) : undefined
+      }
       {...props}
       onRefresh={undefined}
       refreshing={undefined}

@@ -59,8 +59,8 @@ export const Collapsible = ({
   return (
     <View>
       <Animated.View
-        pointerEvents={'none'}
         onLayout={onLayoutContent}
+        pointerEvents={'none'}
         style={[styles.base, styles.hiddenView]}
       >
         {renderContent ? renderContent(progress) : children}

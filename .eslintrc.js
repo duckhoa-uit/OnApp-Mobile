@@ -31,6 +31,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     '@react-native-community',
   ],
@@ -163,6 +164,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'react/jsx-sort-props': 1,
   },
   env: {
     node: true,

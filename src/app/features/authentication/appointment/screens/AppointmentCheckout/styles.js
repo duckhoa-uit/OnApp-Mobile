@@ -1,6 +1,7 @@
+import { StyleSheet } from 'react-native';
+
 import colors from '@constants/colors';
 import GlobalStyles from '@constants/GlobalStyles';
-import { StyleSheet } from 'react-native';
 
 export default styles = StyleSheet.create({
   container: {
@@ -14,8 +15,7 @@ export default styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     width: '100%',
-    paddingHorizontal: GlobalStyles.PADDING_DEFAULT
-
+    paddingHorizontal: GlobalStyles.PADDING_DEFAULT,
   },
   label: {
     fontWeight: '600',
@@ -26,7 +26,7 @@ export default styles = StyleSheet.create({
   changeOption: {
     fontSize: GlobalStyles.FONT_SIZE_SECONDARY,
     lineHeight: 15,
-    color: colors.TEXT_SECONDARY
+    color: colors.TEXT_SECONDARY,
   },
 
   appointmentInfoContainer: {
@@ -34,18 +34,18 @@ export default styles = StyleSheet.create({
     width: '100%',
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderColor: colors.BG_BOX
+    borderColor: colors.BG_BOX,
   },
   appointInfoHeader: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   appointInfoContent: {
     marginTop: 10,
     width: '100%',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   appointmentInfoIcon: {
     width: 36,
@@ -53,7 +53,7 @@ export default styles = StyleSheet.create({
     backgroundColor: colors.BG_BOX,
     borderRadius: 18,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   appointInfoText: {
     marginLeft: 15,
@@ -68,7 +68,7 @@ export default styles = StyleSheet.create({
     paddingTop: 15,
     borderTopWidth: 1,
     borderColor: colors.BG_BOX,
-    paddingHorizontal: GlobalStyles.PADDING_DEFAULT
+    paddingHorizontal: GlobalStyles.PADDING_DEFAULT,
   },
   paymentMethod: {
     width: '100%',
@@ -80,7 +80,7 @@ export default styles = StyleSheet.create({
     borderColor: colors.BG_BOX,
     borderRadius: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   visa: {
     fontStyle: 'italic',
@@ -91,7 +91,7 @@ export default styles = StyleSheet.create({
   },
   priceSummary: {
     flexDirection: 'column',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   priceLabel: {
     fontWeight: '500',
@@ -110,12 +110,11 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 25,
-    paddingHorizontal: GlobalStyles.PADDING_DEFAULT
-
+    paddingHorizontal: GlobalStyles.PADDING_DEFAULT,
   },
   submitBtnContainer: {
     flex: 1,
-    marginLeft: 28
+    marginLeft: 28,
   },
   submitBtn: {
     width: '100%',
@@ -123,11 +122,11 @@ export default styles = StyleSheet.create({
     borderRadius: 10,
     height: 60,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textBtn: {
     color: colors.WHITE,
     fontWeight: 'bold',
-    fontSize: GlobalStyles.FONT_SIZE
-  }
+    fontSize: GlobalStyles.FONT_SIZE,
+  },
 });

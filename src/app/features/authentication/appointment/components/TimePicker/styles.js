@@ -1,6 +1,7 @@
+import { StyleSheet } from 'react-native';
+
 import colors from '@constants/colors';
 import GlobalStyles from '@constants/GlobalStyles';
-import { StyleSheet } from 'react-native';
 
 export default styles = StyleSheet.create({
   timeCardContainer: {
@@ -17,7 +18,7 @@ export default styles = StyleSheet.create({
     fontSize: GlobalStyles.FONT_SIZE_SECONDARY,
     lineHeight: 12,
     color: colors.TEXT_SECONDARY,
-    fontWeight: '500'
+    fontWeight: '500',
   },
-  row: { width: '100%', justifyContent: 'space-between' }
+  row: { width: '100%', justifyContent: 'space-between' },
 });

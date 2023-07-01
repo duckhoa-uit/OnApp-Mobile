@@ -1,4 +1,4 @@
-export default [
+export default doctorInfo = [
   {
     id: '1',
     name: 'Trần Minh Khuyên',
@@ -7,7 +7,7 @@ export default [
     location: 'Quận 5',
     briefInfo:
       'Sức khoẻ tâm thần cần được coi trọng ngang với sức khoẻ thể chất. Bệnh tâm thần có thể chữa khỏi nếu phát hiện sớm và điều trị kịp thời.',
-    avatar: 'https://i.imgur.com/VBAbTiO.png'
+    avatar: 'https://i.imgur.com/VBAbTiO.png',
   },
   {
     id: '2',
@@ -16,7 +16,7 @@ export default [
     rating: 4.7,
     location: 'Quận 7',
     briefInfo: 'I dont give a sh*t about patients',
-    avatar: 'https://i.imgur.com/eAliZCk.png'
+    avatar: 'https://i.imgur.com/eAliZCk.png',
   },
   {
     id: '3',
@@ -25,7 +25,7 @@ export default [
     rating: 3.0,
     location: 'Biên hòa',
     briefInfo: 'I dont give a sh*t about patients',
-    avatar: 'https://i.imgur.com/Y95k02M.png'
+    avatar: 'https://i.imgur.com/Y95k02M.png',
   },
   {
     id: '4',
@@ -34,7 +34,7 @@ export default [
     rating: 4.5,
     location: 'Quận 3',
     briefInfo: 'I dont give a sh*t about patients',
-    avatar: 'https://i.imgur.com/QUWhdnh.png'
+    avatar: 'https://i.imgur.com/QUWhdnh.png',
   },
   {
     id: '5',
@@ -43,7 +43,7 @@ export default [
     rating: 4.2,
     location: 'Quận 1',
     briefInfo: 'I dont give a sh*t about patients',
-    avatar: 'https://i.imgur.com/R2lDac4.png'
+    avatar: 'https://i.imgur.com/R2lDac4.png',
   },
   {
     id: '6',
@@ -52,6 +52,6 @@ export default [
     rating: 4.5,
     location: 'Quận 1',
     briefInfo: 'I dont give a sh*t about patients',
-    avatar: 'https://i.imgur.com/r5EB6Fm.png'
-  }
+    avatar: 'https://i.imgur.com/r5EB6Fm.png',
+  },
 ];

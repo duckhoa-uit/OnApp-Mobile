@@ -2,8 +2,11 @@ import {
   checkKeyInObject,
   STORAGE_KEY_APP_THEME,
   STORAGE_KEY_TOKEN,
+  validResponse,
 } from '@common';
 import { takeLatestListeners } from '@listener';
+import { UserApiGetResponse } from '@model/user';
+import { ApiConstants, NetWorkService } from '@networking';
 import { MyAppTheme, ThemeType } from '@theme';
 import { loadString } from '@utils/storage';
 
@@ -18,6 +21,23 @@ takeLatestListeners()({
 
     if (typeof token === 'string') {
       listenerApi.dispatch(appActions.setToken(token));
+
+      // Fetch user data & store to redux
+      const response = await NetWorkService.Get<UserApiGetResponse>({
+        url: ApiConstants.GET_ME,
+      });
+
+      if (!response) {
+        return;
+      }
+
+      if (validResponse(response)) {
+        const userData = response.data.data;
+
+        console.log('🚀 ~ file: app.ts:36 ~ effect: ~ userData:', userData);
+
+        listenerApi.dispatch(appActions.setAppProfile(userData));
+      }
     }
 
     if (

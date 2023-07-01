@@ -1,6 +1,7 @@
+import { StyleSheet } from 'react-native';
+
 import ColorPalette from '@constants/colors';
 import GlobalStyles from '@constants/GlobalStyles';
-import { StyleSheet } from 'react-native';
 
 export default styles = StyleSheet.create({
   container: {
@@ -9,19 +10,19 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
-    flex: 1
+    flex: 1,
   },
   /*scoll view settings*/
   ScrollView: {
     width: '100%',
     flexDirection: 'column',
-    flex: 1
+    flex: 1,
   },
 
   scrollContainer: {
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingHorizontal: GlobalStyles.PADDING_DEFAULT
+    paddingHorizontal: GlobalStyles.PADDING_DEFAULT,
   },
   BigButton: {
     width: '100%',
@@ -32,7 +33,7 @@ export default styles = StyleSheet.create({
     borderColor: '#E8F3F1',
     borderRadius: 12,
     borderWidth: 1,
-    padding: 8
+    padding: 8,
   },
   doctorImage: {
     backgroundColor: '#C4C4C4',
@@ -41,21 +42,21 @@ export default styles = StyleSheet.create({
     borderRadius: 12,
     width: 112,
     height: 112,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   doctorInfo: {
     flexDirection: 'column',
     marginLeft: 18,
-    flex: 1
+    flex: 1,
   },
   doctorName: {
     fontSize: GlobalStyles.FONT_SIZE,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   doctorSpecialty: {
     marginTop: 8,
     fontSize: GlobalStyles.FONT_SIZE_SECONDARY,
-    color: ColorPalette.TEXT_SECONDARY
+    color: ColorPalette.TEXT_SECONDARY,
   },
   ratingBox: {
     marginTop: 15,
@@ -65,27 +66,27 @@ export default styles = StyleSheet.create({
     backgroundColor: '#E8F3F1',
     padding: 4,
     borderRadius: 2,
-    width: 40
+    width: 40,
   },
   rating: {
     marginLeft: 4,
     fontSize: GlobalStyles.FONT_SIZE_SECONDARY,
-    color: ColorPalette.GREEN_NEON
+    color: ColorPalette.GREEN_NEON,
   },
   star: {
     width: 18,
     height: 18,
-    color: ColorPalette.GREEN_NEON
+    color: ColorPalette.GREEN_NEON,
   },
   doctorLocation: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    marginTop: 8
+    marginTop: 8,
   },
   locationText: {
     marginLeft: 4,
     fontSize: GlobalStyles.FONT_SIZE_SECONDARY,
-    color: ColorPalette.TEXT_SECONDARY
-  }
+    color: ColorPalette.TEXT_SECONDARY,
+  },
 });

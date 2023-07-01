@@ -1,5 +1,6 @@
-import GlobalStyles from '@constants/GlobalStyles';
 import { StyleSheet } from 'react-native';
+
+import GlobalStyles from '@constants/GlobalStyles';
 
 const styles = StyleSheet.create({
   navigationBar: {
@@ -8,14 +9,14 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'relative'
+    position: 'relative',
   },
   btnBack: {
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 99,
     marginLeft: GlobalStyles.PADDING_DEFAULT,
-    color: 'inherit'
+    color: 'inherit',
   },
   titleContainer: {
     position: 'absolute',
@@ -26,19 +27,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'inherit'
+    color: 'inherit',
   },
   title: {
     fontSize: 24,
     fontWeight: '600',
     textAlign: 'center',
     flex: 1,
-    color: 'inherit'
+    color: 'inherit',
   },
   accessoryRight: {
     height: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
+
 export default styles;

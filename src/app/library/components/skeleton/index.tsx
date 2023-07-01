@@ -66,19 +66,19 @@ export const Skeleton = ({
   // render
   return (
     <MaskedView
-      style={[styles.markElement]}
       maskElement={
         <View style={[styles.wrapChildren]}>
           {children ? children : <BaseContent />}
         </View>
       }
+      style={[styles.markElement]}
     >
       <View style={[overlay]} />
       <Animated.View style={reLinearStyle}>
         <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
           colors={linearColor}
+          end={{ x: 1, y: 0 }}
+          start={{ x: 0, y: 0 }}
           style={styles.linear}
         />
       </Animated.View>

@@ -18,9 +18,9 @@ export const LocalImage = ({
   return (
     <View style={containerStyle}>
       <FastImage
-        style={[styles.img, styleOverride]}
         resizeMode={resizeMode}
         source={images[source ?? 'default']}
+        style={[styles.img, styleOverride]}
       />
     </View>
   );

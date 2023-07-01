@@ -148,9 +148,9 @@ export const SnackItem = memo(
         exiting={CustomExitAnimation}
         style={[styles.itemBar, containStyle]}
       >
-        <VectorIcon icon={getIcon(item.type)} color="white" />
+        <VectorIcon color="white" icon={getIcon(item.type)} />
         <Spacer width={10} />
-        <Text style={[styles.text]} preset="linkMedium" color="white">
+        <Text color="white" preset="linkMedium" style={[styles.text]}>
           {message}
         </Text>
       </Animated.View>

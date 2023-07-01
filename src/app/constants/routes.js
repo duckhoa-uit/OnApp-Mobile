@@ -12,5 +12,5 @@ export default APP_SCREEN = Object.freeze({
   APPOINTMENTS: 'Appointments',
   APPOINTMENT_CHECKOUT: 'Appointment Checkout',
   COURSES: 'Course List',
-  COURSE_DETAILS: 'Course Details'
+  COURSE_DETAILS: 'Course Details',
 });

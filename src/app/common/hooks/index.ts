@@ -366,3 +366,5 @@ export {
   useDidMount,
   useEventCallback,
 };
+
+export * from './use-slots';
