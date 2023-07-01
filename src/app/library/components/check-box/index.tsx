@@ -60,7 +60,7 @@ export const CheckBox = ({
         <View style={[styles.outline, outlineStyleOverwrite]}>
           <Animated.View style={[styles.fill, fillStyle, styleAnimated]} />
         </View>
-        <Text text={text} t18n={t18n} style={styles.label} />
+        <Text style={styles.label} t18n={t18n} text={text} />
       </>
     </TouchableOpacity>
   );

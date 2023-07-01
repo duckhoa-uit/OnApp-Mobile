@@ -78,32 +78,32 @@ export const ProgressCircle = ({
     <View style={styles.container}>
       {showTextProgress && (
         <AnimatedText
-          style={[styles.textProgress, textProgressStyle]}
           children={renderText()}
+          style={[styles.textProgress, textProgressStyle]}
         />
       )}
       <View style={[styles.wrapCircle]}>
         <Svg
           fill={'transparent'}
-          width={radius * 2 + strokeWidth}
           height={radius * 2 + strokeWidth}
+          width={radius * 2 + strokeWidth}
         >
           <AnimatedCircle
             r={radius}
-            x={radius + strokeWidth / 2}
-            y={radius + strokeWidth / 2}
             stroke={bg}
             strokeWidth={strokeWidth}
-          />
-          <AnimatedCircle
-            strokeLinecap={round ? 'round' : undefined}
-            strokeDasharray={strokeDasharray}
-            r={radius}
             x={radius + strokeWidth / 2}
             y={radius + strokeWidth / 2}
-            stroke={fg}
-            strokeWidth={strokeWidth}
+          />
+          <AnimatedCircle
             animatedProps={circleProps}
+            r={radius}
+            stroke={fg}
+            strokeDasharray={strokeDasharray}
+            strokeLinecap={round ? 'round' : undefined}
+            strokeWidth={strokeWidth}
+            x={radius + strokeWidth / 2}
+            y={radius + strokeWidth / 2}
           />
         </Svg>
       </View>

@@ -39,20 +39,20 @@ export const Input = <T extends Record<string, any>>({
   return (
     <>
       <TextInput
-        ref={field.ref}
-        nameTrigger={nameTrigger as string}
-        trigger={trigger}
+        defaultValue={(getValues() as Record<string, string>)[name as string]}
         error={error?.message !== undefined}
         label={label}
-        onChangeText={field.onChange}
+        nameTrigger={nameTrigger as string}
         onBlur={field.onBlur}
-        defaultValue={(getValues() as Record<string, string>)[name as string]}
+        onChangeText={field.onChange}
+        ref={field.ref}
+        trigger={trigger}
         {...rest}
       />
       <HelperText
-        visible={message !== undefined}
         msg={message ?? ''}
         type={'error'}
+        visible={message !== undefined}
       />
     </>
   );

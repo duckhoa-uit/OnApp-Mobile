@@ -32,7 +32,7 @@ export const CommentLoading = ({
   // function
   const renderItem = (item: number) => {
     return reRender ? null : (
-      <ItemComment overlayColor={overlayColor} key={item} index={item} />
+      <ItemComment index={item} key={item} overlayColor={overlayColor} />
     );
   };
 

@@ -1,5 +1,4 @@
-fastlane documentation
-----
+## fastlane documentation
 
 # Installation
 
@@ -31,8 +30,7 @@ IOS build IPA then upload to TestFlight
 
 IOS code push
 
-----
-
+---
 
 ## Android
 
@@ -52,7 +50,7 @@ Android build apk then upload to app center
 
 Android code push
 
-----
+---
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 

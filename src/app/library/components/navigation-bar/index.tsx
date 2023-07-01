@@ -40,9 +40,9 @@ export const NavigationBar = ({
             iconLeft
           ) : (
             <Icon
-              size={20}
-              icon="back"
               colorTheme={theme === 'dark' ? 'text' : 'primaryLight'}
+              icon="back"
+              size={20}
             />
           )}
         </Button>

@@ -109,11 +109,14 @@ export const TextInput = forwardRef(
         <Animated.View style={[styles.containerInput, containerRestyle]}>
           <RNTextInput
             {...rest}
-            ref={ref}
-            editable={editable}
             autoCorrect={false}
             clearButtonMode={'never'}
-            underlineColorAndroid={'transparent'}
+            editable={editable}
+            multiline={multiline}
+            onBlur={handleBlur}
+            onChangeText={handleTextChange}
+            onFocus={handleFocus}
+            placeholder={placeholder || (placeholderI18n && t(placeholderI18n))}
             placeholderTextColor={
               editable === false
                 ? colors.border
@@ -121,17 +124,14 @@ export const TextInput = forwardRef(
                   (placeholderTextColorTheme &&
                     colors[placeholderTextColorTheme])
             }
-            placeholder={placeholder || (placeholderI18n && t(placeholderI18n))}
+            ref={ref}
             selectionColor={colors.primary}
             style={[styles.input, multiline && styles.multiline]}
-            multiline={multiline}
-            onChangeText={handleTextChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            underlineColorAndroid={'transparent'}
           />
           {rightChildren}
-          <FocusedLine focused={focusedValue} disabled={disabled} />
-          <ErrorLine error={errorValue} disabled={disabled} />
+          <FocusedLine disabled={disabled} focused={focusedValue} />
+          <ErrorLine disabled={disabled} error={errorValue} />
         </Animated.View>
       </>
     );

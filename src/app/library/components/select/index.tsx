@@ -61,10 +61,10 @@ export const Select = (props: SelectProps) => {
     return (
       <SelectItem
         customItem={customItem}
-        textItemStyle={textItemStyle}
-        onPress={onPressOption}
-        item={item}
         index={index}
+        item={item}
+        onPress={onPressOption}
+        textItemStyle={textItemStyle}
       />
     );
   };
@@ -90,21 +90,21 @@ export const Select = (props: SelectProps) => {
   // render
   return (
     <>
-      <View style={[styles.root]} collapsable={false}>
-        <TouchableOpacity onPress={showDrop} activeOpacity={0.68}>
+      <View collapsable={false} style={[styles.root]}>
+        <TouchableOpacity activeOpacity={0.68} onPress={showDrop}>
           <View style={[styles.rowButton]}>
-            <Text children={selectedText} />
+            <Text>{selectedText}</Text>
             {rightChildren}
           </View>
         </TouchableOpacity>
         <Modal
-          onBackdropPress={hideDrop}
-          onBackButtonPress={hideDrop}
+          backdropOpacity={0.3}
           entering={SlideInDown}
           exiting={SlideOutDown}
-          style={[styles.modal]}
-          backdropOpacity={0.3}
           isVisible={visible}
+          onBackButtonPress={hideDrop}
+          onBackdropPress={hideDrop}
+          style={[styles.modal]}
         >
           <View>
             <View style={[styles.content, content]}>

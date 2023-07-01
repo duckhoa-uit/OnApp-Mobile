@@ -44,7 +44,7 @@ local.properties
 *.aar
 *.ap_
 release/
-
+.vscode/
 # Auto generate env
 
 .base.env

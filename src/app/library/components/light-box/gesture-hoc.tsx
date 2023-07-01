@@ -193,9 +193,9 @@ export const GestureHOC = memo(
       <GestureDetector gesture={panGesture}>
         <Animated.View style={[imageStyle]}>
           <FastImage
-            style={[styles.img]}
             resizeMode={'cover'}
             source={source}
+            style={[styles.img]}
           />
         </Animated.View>
       </GestureDetector>

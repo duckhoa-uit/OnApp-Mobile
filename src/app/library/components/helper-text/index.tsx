@@ -95,8 +95,8 @@ export const HelperText = ({
   return (
     <View style={[styles.container]}>
       <Animated.View
-        pointerEvents={'none'}
         onLayout={_onLayoutContent}
+        pointerEvents={'none'}
         style={[styles.hiddenView]}
       >
         <Text style={[styles.text]}>{currentMessage}</Text>
