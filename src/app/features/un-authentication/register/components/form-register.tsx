@@ -16,8 +16,6 @@ import { FormRegisterProps } from '../type';
 export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
   const styles = useRegisterStyle();
 
-  const [passwordCheck, setPasswordCheck] = useState(false);
-
   const [date, setDate] = useState<Date>(new Date());
 
   const [open, setOpen] = useState(false);
@@ -31,9 +29,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
 
   // function
   const onSubmitKey = () => {
-    if (passwordCheck) {
       formMethod.handleSubmit(onSubmit)();
-    }
   };
 
   // render
@@ -55,7 +51,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
       />
       <Input<FormRegisterType>
         label={'Nhập lại mật khẩu'}
-        name={'password'}
+        name={'confirmPassword'}
         rightChildren={
           <Icon
             color="#777"
@@ -81,12 +77,17 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         onCancel={() => {
           setOpen(false);
         }}
-        onConfirm={date => {
+        onConfirm={(date) => {
           setDate(date);
 
           setOpen(false);
         }}
         open={open}
+      />
+      <Input<FormRegisterType>
+        label={'Số điện thoại'}
+        name={'phone'}
+        keyboardType={'phone-pad'}
       />
 
       <Block direction={'row'} middle paddingVertical={15}>
