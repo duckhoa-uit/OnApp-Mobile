@@ -1,10 +1,10 @@
 import { ApiBaseResponse } from '@networking';
-import { z } from 'zod';
+import { TypeOf, z } from 'zod';
 
 import { User } from './user';
 
 export enum BookingStatus {
-  CANCELLED = 'CANCELLED',
+  CANCELED = 'CANCELED',
   ACCEPTED = 'ACCEPTED',
   REJECTED = 'REJECTED',
   PENDING = 'PENDING',
@@ -33,6 +33,17 @@ export type Appointment = {
   createdBy?: User;
 };
 
+export type AppointmentFilter =
+  | 'upcoming'
+  | 'past'
+  | 'canceled'
+  | 'unconfirmed';
+
+export interface AppointmentState {
+  filter: AppointmentFilter;
+  appointments: Appointment[];
+}
+
 export const appointmentCreateBodySchema = z.object({
   end: z.string(),
   eventTypeId: z.number(),
@@ -46,6 +57,23 @@ export const appointmentCreateBodySchema = z.object({
   bookingUid: z.string().optional(),
   seatReferenceUid: z.string().optional(),
 });
+
+export const getUserAppointmentsSchema = z.object({
+  query: z.object({
+    filters: z.object({
+      userIds: z.string().array().optional(),
+      status: z.enum(['upcoming', 'past', 'canceled', 'unconfirmed']),
+      eventTypeIds: z.number().array().optional(),
+    }),
+    limit: z.number().min(1).max(100).nullish(),
+    // <-- "cursor" needs to exist when using useInfiniteQuery, but can be any type
+    cursor: z.number().nullish(),
+  }),
+});
+
+export type GetUserAppointmentsQueryParams = TypeOf<
+  typeof getUserAppointmentsSchema
+>['query'];
 
 export type AppointmentCreateBody = z.input<typeof appointmentCreateBodySchema>;
 

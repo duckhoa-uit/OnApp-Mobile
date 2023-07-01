@@ -1,14 +1,19 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { validResponse } from '@common';
-import { Block, ListView, NavigationBar, Screen } from '@components';
+import {
+  Block,
+  ListView,
+  NavigationBar,
+  Screen,
+  Skeleton,
+  Text,
+} from '@components';
 import { SearchBar } from '@components/search-bar';
-import { User } from '@model/user';
 import { goBack, navigateScreen } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
-import { ApiBaseResponse, ApiConstants, NetWorkService } from '@networking';
+import { useQueryConsulters } from '@networking/queries/consulter/use-query-consulters';
 import { useTheme } from '@theme';
 
 import ConsulterCard from '../../components/consulter-card';
@@ -16,27 +21,17 @@ import ConsulterCard from '../../components/consulter-card';
 const ConsulterListComponent = () => {
   const theme = useTheme();
 
-  const [users, setUsers] = useState<User[]>([]);
+  // const [users, setUsers] = useState<User[]>([]);
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const response = await NetWorkService.Get<ApiBaseResponse<User[]>>({
-        url: ApiConstants.GET_CONSULTER_LIST,
-      });
-
-      if (!response) {
-        return;
-      }
-
-      if (validResponse(response)) {
-        const _users = response.data.data;
-
-        setUsers(_users);
-      }
-    })();
-  }, []);
+  const {
+    data: consulters,
+    isLoading,
+    fetchStatus,
+  } = useQueryConsulters({
+    variables: {},
+  });
 
   // render
   return (
@@ -50,16 +45,20 @@ const ConsulterListComponent = () => {
 
         <Block direction="row" marginTop={10} paddingHorizontal={20}>
           <SearchBar
-            onBlur={() => setLoading(false)}
-            onFocus={() => setLoading(true)}
-            spinnerVisibility={loading}
+            // onBlur={() => setLoading(false)}
+            // onFocus={() => setLoading(true)}
+            spinnerVisibility={isLoading}
           />
         </Block>
 
-        <Block block paddingHorizontal={20}>
+        <Block marginTop={20} paddingHorizontal={20}>
           <ListView
             ItemSeparatorComponent={Divider}
-            data={users}
+            ListEmptyComponent={
+              fetchStatus === 'idle' ? ListEmptyComponent : null
+            }
+            ListFooterComponent={isLoading ? ListFooterComponent : null}
+            data={consulters}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
               <ConsulterCard
@@ -81,6 +80,20 @@ const ConsulterListComponent = () => {
 const Divider = memo(
   () => <Block style={{ width: '100%', height: 12 }} />,
   isEqual,
+);
+
+const ListFooterComponent = () => (
+  <Skeleton>
+    <Block block borderRadius={8} color="red" height={120} marginTop={16} />
+    <Block block borderRadius={8} color="red" height={120} marginTop={16} />
+    <Block block borderRadius={8} color="red" height={120} marginTop={16} />
+  </Skeleton>
+);
+
+const ListEmptyComponent = () => (
+  <Block marginTop={10} paddingHorizontal={10}>
+    <Text>Bạn đã đi đến cuối danh sách</Text>
+  </Block>
 );
 
 export const ConsulterList = memo(ConsulterListComponent, isEqual);

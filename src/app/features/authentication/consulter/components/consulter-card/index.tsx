@@ -44,8 +44,8 @@ const ConsulterCard = ({
             {consulter.name}
           </Text>
           <Text style={styles.doctorSpecialty}>
-            {/* {consulter.profile?.headline} */}
-            {'Tâm lý học trị liệu'}
+            {consulter.profile?.headline}
+            {/* {'Tâm lý học trị liệu'} */}
           </Text>
 
           <View style={styles.ratingBox}>

@@ -24,7 +24,6 @@ export const useHomeStyle = () => {
           fontSize: 24,
           color: 'white',
           fontWeight: '500',
-          maxWidth: 200,
         },
         whitePad: {
           marginTop: -27,

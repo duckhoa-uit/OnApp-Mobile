@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
-import { Alert, TouchableOpacity } from 'react-native';
+import { Alert, Image as RNImage, TouchableOpacity } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
+import { images } from '@assets/image';
 import { Block, Screen, Text } from '@components';
 import { FormRegisterType } from '@model/authentication';
 import { navigateScreen } from '@navigation/navigation-service';
@@ -20,15 +21,20 @@ const RegisterComponent = () => {
 
   // render
   return (
-    <Block block justifyContent="center" paddingTop={0} paddingHorizontal={15}>
+    <Block block justifyContent="center" paddingHorizontal={15} paddingTop={0}>
       <Screen
+        backgroundColor={'transparent'}
         bottomInsetColor="transparent"
         style={{
           paddingVertical: 100,
           paddingHorizontal: 10,
         }}
-        backgroundColor={'transparent'}
       >
+        <RNImage
+          resizeMode={'cover'}
+          source={images.logo}
+          style={styles.loginIcons}
+        />
         <FormRegister onSubmit={handleSubmit} />
 
         <Block style={styles.signInContainer}>

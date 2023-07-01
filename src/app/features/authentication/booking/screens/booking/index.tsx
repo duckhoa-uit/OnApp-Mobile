@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
-import { validResponse } from '@common';
+import { dispatch, validResponse } from '@common';
 import {
   Block,
   Button,
@@ -23,6 +23,7 @@ import { goBack } from '@navigation/navigation-service';
 import { APP_SCREEN, RootRouteProps } from '@navigation/screen-types';
 import { ApiConstants, NetWorkService } from '@networking';
 import { useRoute } from '@react-navigation/native';
+import { appActions } from '@redux-slice';
 import { useTheme } from '@theme';
 import { timeZone } from '@utils/clock';
 import dayjs from '@utils/dayjs';
@@ -67,6 +68,8 @@ const ConfirmBookingScreen = () => {
     );
 
     try {
+      dispatch(appActions.startProcess());
+
       await NetWorkService.Post<AppointmentApiResponse>({
         url: ApiConstants.CREATE_APPOINTMENT,
         body: payload,
@@ -75,6 +78,8 @@ const ConfirmBookingScreen = () => {
       // console.log('🚀 ~ file: index.tsx:71 ~ bookAppointment ~ res:', res);
     } catch (error) {
       console.log('🚀 ~ file: index.tsx:69 ~ bookAppointment ~ error:', error);
+    } finally {
+      dispatch(appActions.endProcess());
     }
   };
 
@@ -216,7 +221,7 @@ const ConfirmBookingScreen = () => {
               Tổng cộng
             </Text>
             <Text fontSize={18} fontWeight={'600'} lineHeight={22}>
-              505.000VNĐ
+              500.000VNĐ
             </Text>
           </Block>
           <Block style={styles.submitBtnContainer}>

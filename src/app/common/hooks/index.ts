@@ -368,3 +368,5 @@ export {
 };
 
 export * from './use-slots';
+
+export * from './use-scroll-manager';

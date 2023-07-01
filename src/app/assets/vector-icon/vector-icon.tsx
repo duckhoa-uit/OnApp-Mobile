@@ -30,8 +30,8 @@ export const VectorIcon = (props: VectorIconProps) => {
     <VectorIconBase
       size={24}
       {...props}
-      name={ICONS[props.icon]}
       color={props.colorTheme ? colors[props.colorTheme] : props.color}
+      name={ICONS[props.icon]}
     />
   );
 };

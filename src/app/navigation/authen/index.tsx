@@ -6,6 +6,7 @@ import { VectorIcon } from '@assets/vector-icon/vector-icon';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import { AppointmentsStack } from './appointment-stack';
 import { HomeStack } from './home-stack';
 
 const Main = createBottomTabNavigator();
@@ -21,14 +22,14 @@ export const MainScreen = () => {
       }}
     >
       <Main.Screen
-        name={APP_SCREEN.HOME_STACK}
         component={HomeStack}
+        name={APP_SCREEN.HOME_STACK}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarItemContainer}>
               {focused ? (
-                <VectorIcon icon="home" color={'#D92659'} />
+                <VectorIcon color={'#D92659'} icon="home" />
               ) : (
                 <VectorIcon icon="home" />
               )}
@@ -37,14 +38,14 @@ export const MainScreen = () => {
         }}
       />
       <Main.Screen
-        name={APP_SCREEN.MESSAGE_STACK}
         component={HomeStack}
+        name={APP_SCREEN.MESSAGE_STACK}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarItemContainer}>
               {focused ? (
-                <VectorIcon icon="message" color={'#D92659'} />
+                <VectorIcon color={'#D92659'} icon="message" />
               ) : (
                 <VectorIcon icon="message" />
               )}
@@ -53,14 +54,14 @@ export const MainScreen = () => {
         }}
       />
       <Main.Screen
+        component={AppointmentsStack}
         name={APP_SCREEN.CALENDAR_STACK}
-        component={HomeStack}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarItemContainer}>
               {focused ? (
-                <VectorIcon icon="calendar" color={'#D92659'} />
+                <VectorIcon color={'#D92659'} icon="calendar" />
               ) : (
                 <VectorIcon icon="calendar" />
               )}
@@ -69,14 +70,14 @@ export const MainScreen = () => {
         }}
       />
       <Main.Screen
-        name={APP_SCREEN.PROFILE_STACK}
         component={HomeStack}
+        name={APP_SCREEN.PROFILE_STACK}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarItemContainer}>
               {focused ? (
-                <VectorIcon icon="profile" color={'#D92659'} />
+                <VectorIcon color={'#D92659'} icon="profile" />
               ) : (
                 <VectorIcon icon="profile" />
               )}

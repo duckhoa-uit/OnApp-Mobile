@@ -28,19 +28,22 @@ const HomeComponent = () => {
         statusBarStyle="light-content"
       >
         <Block style={styles.header}>
-          <Text style={styles.headerText}>Xin chào bạn</Text>
+          <Text style={styles.headerText}>Tham vấn tâm lý cùng Ổn App</Text>
           <Icon color="#fff" icon="bell" onPress={logout} />
         </Block>
 
         <Block style={styles.whitePad}>
           <TextInput
+            focusable={false}
             onChangeText={text => {
               console.log(text);
             }}
+            onPressIn={() => navigateScreen(APP_SCREEN.CONSULTER_LIST)}
             placeholder="Tìm kiếm"
             placeholderTextColor={'#C2C2C2'}
             style={styles.searchBar}
           />
+          <Block />
         </Block>
       </Screen>
     </Block>

@@ -37,14 +37,14 @@ export const RootNavigation = () => {
             gestureEnabled: true,
           }}
         >
-          <RootStack.Screen name={APP_SCREEN.LOGIN} component={Login} />
-          <RootStack.Screen name={APP_SCREEN.REGISTER} component={Register} />
+          <RootStack.Screen component={Login} name={APP_SCREEN.LOGIN} />
+          <RootStack.Screen component={Register} name={APP_SCREEN.REGISTER} />
         </RootStack.Group>
       ) : (
         <RootStack.Group>
           <RootStack.Screen
-            name={APP_SCREEN.AUTHORIZE}
             component={MainScreen}
+            name={APP_SCREEN.AUTHORIZE}
           />
         </RootStack.Group>
       )}

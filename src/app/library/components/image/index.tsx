@@ -73,17 +73,17 @@ const ImageComponent = ({
       <Animated.View style={[StyleSheet.absoluteFillObject]}>
         <FastImage
           {...rest}
-          onLoadStart={handleLoadStart}
-          resizeMode={resizeMode}
           onError={handleLoadError}
           onLoad={handleSucceeded}
           onLoadEnd={handleLoadImageEnd}
-          style={[styles.img, styleOverride]}
+          onLoadStart={handleLoadStart}
+          resizeMode={resizeMode}
           source={
             onCheckType(source, 'string')
               ? { uri: source as string }
               : (source as number | Record<string, unknown>)
           }
+          style={[styles.img, styleOverride]}
         />
       </Animated.View>
       <Animated.View

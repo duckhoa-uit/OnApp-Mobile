@@ -8,6 +8,7 @@ import { API_URL } from '@env';
 import { AppState } from '@model/app';
 import { appActions } from '@redux-slice';
 import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import qs from 'qs';
 
 import { ApiConstants } from './api';
 import {
@@ -86,6 +87,9 @@ function Request<T = Record<string, unknown>>(config: ParamsNetwork) {
     headers: {
       'Content-Type': 'application/json',
       [tokenKeyHeader]: token ?? '',
+    },
+    paramsSerializer: params => {
+      return qs.stringify(params);
     },
   };
 

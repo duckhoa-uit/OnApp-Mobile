@@ -15,6 +15,10 @@ export const useRegisterStyle = () => {
           width: '100%',
           marginTop: 15,
         },
+        loginIcons: {
+          width: 284,
+          height: 192,
+        },
         registerButton: {
           width: '100%',
           backgroundColor: theme.colors.primary,
