@@ -6,6 +6,7 @@ import { VectorIcon } from '@assets/vector-icon/vector-icon';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import { AppointmentsStack } from './appointment-stack';
 import { HomeStack } from './home-stack';
 
 const Main = createBottomTabNavigator();
@@ -53,7 +54,7 @@ export const MainScreen = () => {
         }}
       />
       <Main.Screen
-        component={HomeStack}
+        component={AppointmentsStack}
         name={APP_SCREEN.CALENDAR_STACK}
         options={{
           headerShown: false,

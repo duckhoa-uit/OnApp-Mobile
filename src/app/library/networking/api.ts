@@ -5,12 +5,16 @@ const ApiEndPoint = {
   REFRESH_TOKEN: '',
   GET_ME: 'users/me',
   GET_CONSULTER_LIST: 'users/consulter',
+
   GET_SLOT: 'slots',
   RESERVE_SLOT: 'slots',
   REMOVE_MARKED_SLOT: 'slots',
+
   CREATE_APPOINTMENT: 'appointments',
+  GET_USER_APPOINTMENTS: 'appointments',
   GET_APPOINTMENT_UID: 'appointments/get-uid',
   GET_APPOINTMENT_BY_UID: 'appointments',
+
   GET_EVENT_TYPE: 'event-types',
 } as const;
 

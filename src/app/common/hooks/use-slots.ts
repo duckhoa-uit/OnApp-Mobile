@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useQueryTimeSlots } from '@networking/slot/use-query-slots';
+import { useQueryTimeSlots } from '@networking/queries/slot/use-query-slots';
 import { useIsFocused } from '@react-navigation/native';
 import { Dayjs } from '@utils/dayjs';
 

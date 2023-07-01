@@ -28,33 +28,22 @@ const HomeComponent = () => {
         statusBarStyle="light-content"
       >
         <Block style={styles.header}>
-          <Text style={styles.headerText}>Xin chào bạn</Text>
+          <Text style={styles.headerText}>Tham vấn tâm lý cùng Ổn App</Text>
           <Icon color="#fff" icon="bell" onPress={logout} />
         </Block>
 
         <Block style={styles.whitePad}>
           <TextInput
+            focusable={false}
             onChangeText={text => {
               console.log(text);
             }}
+            onPressIn={() => navigateScreen(APP_SCREEN.CONSULTER_LIST)}
             placeholder="Tìm kiếm"
             placeholderTextColor={'#C2C2C2'}
             style={styles.searchBar}
           />
-          <View>
-            <TouchableOpacity
-              style={[styles.redBox, { marginRight: 25 }]}
-              // onPress={() => {this.props.navigation.navigate('MakeAppointment')}}
-            >
-              <View style={styles.whiteBox}>
-                <Image
-                  source={require('@assets/image/source/doctor')}
-                  style={styles.coverImg}
-                />
-              </View>
-              <Text style={styles.bigButtonText}>Tham vấn tâm lý</Text>
-            </TouchableOpacity>
-          </View>
+          <Block />
         </Block>
       </Screen>
     </Block>

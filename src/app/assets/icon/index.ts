@@ -18,6 +18,7 @@ export const icons = {
   location: require('./source/location.png'),
   calendar: require('./source/calendar.png'),
   editSquare: require('./source/edit-square.png'),
+  dot: require('./source/dot.png'),
 };
 
 export type IconTypes = keyof typeof icons;
