@@ -29,7 +29,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
 
   // function
   const onSubmitKey = () => {
-      formMethod.handleSubmit(onSubmit)();
+    formMethod.handleSubmit(onSubmit)();
   };
 
   // render
@@ -77,7 +77,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         onCancel={() => {
           setOpen(false);
         }}
-        onConfirm={(date) => {
+        onConfirm={date => {
           setDate(date);
 
           setOpen(false);
@@ -85,9 +85,9 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         open={open}
       />
       <Input<FormRegisterType>
+        keyboardType={'phone-pad'}
         label={'Số điện thoại'}
         name={'phone'}
-        keyboardType={'phone-pad'}
       />
 
       <Block direction={'row'} middle paddingVertical={15}>

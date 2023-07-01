@@ -22,7 +22,12 @@ const RegisterComponent = () => {
   // render
   return (
     <ScrollView>
-      <Block block justifyContent="center" paddingHorizontal={15} paddingTop={0}>
+      <Block
+        block
+        justifyContent="center"
+        paddingHorizontal={15}
+        paddingTop={0}
+      >
         <Screen
           backgroundColor={'transparent'}
           bottomInsetColor="transparent"
