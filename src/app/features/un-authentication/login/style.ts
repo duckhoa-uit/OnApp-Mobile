@@ -16,7 +16,6 @@ export const useLoginStyle = () => {
           alignItems: 'center',
           width: '100%',
           height: '100%',
-          // paddingHorizontal: GlobalStyles.PADDING_DEFAULT
         },
         loginIcons: {
           width: 284,

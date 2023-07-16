@@ -47,6 +47,7 @@ const ConsulterListComponent = () => {
           <SearchBar
             // onBlur={() => setLoading(false)}
             // onFocus={() => setLoading(true)}
+            placeholder={isLoading ? 'Đang tải' : 'Tìm kiếm'}
             spinnerVisibility={isLoading}
           />
         </Block>

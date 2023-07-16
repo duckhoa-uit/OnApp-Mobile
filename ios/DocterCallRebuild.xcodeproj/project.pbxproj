@@ -20,6 +20,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		84A05207284A6983006E9CDE /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A05205284A6983006E9CDE /* BootSplash.storyboard */; };
 		84A0520D284A6BB2006E9CDE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84A0520C284A6BB2006E9CDE /* Config.xcconfig */; };
+		FA0B90AD2A4FDED300E7CFEE /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = FA0B90AC2A4FDED300E7CFEE /* main.jsbundle */; };
 		FA7C4CFC2A2A534B00577E0A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA7C4CF62A2A534B00577E0A /* Inter-Medium.ttf */; };
 		FA7C4CFD2A2A534B00577E0A /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA7C4CF72A2A534B00577E0A /* Inter-Light.ttf */; };
 		FA7C4CFE2A2A534B00577E0A /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA7C4CF82A2A534B00577E0A /* Inter-Thin.ttf */; };
@@ -50,6 +51,7 @@
 		B56E641CE7E04355AE15F288 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/app/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		DF241C27FC03403CA5776796 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/app/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FA0B90AC2A4FDED300E7CFEE /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		FA7C4CF62A2A534B00577E0A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Medium.ttf"; path = "../src/app/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
 		FA7C4CF72A2A534B00577E0A /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Light.ttf"; path = "../src/app/assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
 		FA7C4CF82A2A534B00577E0A /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Thin.ttf"; path = "../src/app/assets/fonts/Inter-Thin.ttf"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				FA0B90AC2A4FDED300E7CFEE /* main.jsbundle */,
 			);
 			name = DocterCallRebuild;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				40B314308F954F2A9F552547 /* Roboto-Italic.ttf in Resources */,
 				745C99E719FA41A58544AB93 /* Roboto-Light.ttf in Resources */,
 				0C08867567B34F9AA2E27291 /* Roboto-Medium.ttf in Resources */,
+				FA0B90AD2A4FDED300E7CFEE /* main.jsbundle in Resources */,
 				FA7C4CFC2A2A534B00577E0A /* Inter-Medium.ttf in Resources */,
 				FA7C4CFF2A2A534B00577E0A /* Inter-Bold.ttf in Resources */,
 				FA7C4CFD2A2A534B00577E0A /* Inter-Light.ttf in Resources */,

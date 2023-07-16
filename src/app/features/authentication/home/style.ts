@@ -46,7 +46,50 @@ export const useHomeStyle = () => {
           width: '100%',
           height: 48,
         },
+
+        bigButtonSection: {
+          marginTop: 10,
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+
+        redBox: {
+          width: '50%',
+          height: 188,
+          backgroundColor: theme.colors.primaryLight,
+          borderRadius: 8,
+          alignItems: 'center',
+          padding: 14,
+        },
+
+        whiteBox: {
+          width: '100%',
+          height: 112,
+          marginTop: 14,
+          backgroundColor: '#F3F8FA',
+          borderRadius: 8,
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 6,
+          paddingRight: 105,
+        },
+
+        coverImg: {
+          height: 100,
+          width: 100,
+        },
+        bigButtonText: {
+          fontSize: 12,
+          fontWeight: 'bold',
+          color: 'white',
+          width: '100%',
+          height: '100%',
+          textAlign: 'center',
+          marginTop: 16,
+        },
       }),
-    [theme.colors.primary],
+    [theme.colors.primaryLight],
   );
 };
