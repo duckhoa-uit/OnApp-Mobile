@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
