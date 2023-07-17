@@ -51,7 +51,7 @@ export const AppContainer = () => {
   return (
     <NavigationContainer ref={navigationRef} theme={MyAppTheme[theme]}>
       <>
-        <StatusBar translucent backgroundColor={'transparent'} />
+        <StatusBar backgroundColor={'transparent'} translucent />
         {!loadingApp && (
           <>
             <RootNavigation />

@@ -28,7 +28,7 @@ export const Login = () => {
       authenticationActions.login(
         payload,
         () => {
-          console.log('login thanhf cong ne');
+          console.log('login thanh cong ne');
 
           dispatch(appActions.endProcess());
         },

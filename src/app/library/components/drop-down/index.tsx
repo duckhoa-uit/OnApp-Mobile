@@ -291,11 +291,11 @@ export const DropDown = forwardRef((props: DropDownProps, _) => {
   return (
     <>
       <View ref={_refDrop} style={[styles.wrapView, wrapCustomStyle, style]}>
-        <TouchableOpacity onPress={onToggle} disabled={disabled}>
+        <TouchableOpacity disabled={disabled} onPress={onToggle}>
           <View style={[styles.wrapPlaceholder, containerStyle]}>
             <Text
-              style={[styles.placeHolder, placeholderStyle]}
               numberOfLines={1}
+              style={[styles.placeHolder, placeholderStyle]}
             >
               {getTextPlaceHolder()}
             </Text>
@@ -311,24 +311,24 @@ export const DropDown = forwardRef((props: DropDownProps, _) => {
         </TouchableOpacity>
       </View>
       <Modal
-        backdropOpacity={0.3}
         backdropColor="transparent"
-        onBackButtonPress={hideDrop}
-        onBackdropPress={hideDrop}
-        onModalShow={onOpen}
-        onModalHide={onClose}
+        backdropOpacity={0.3}
         entering={FadeIn.duration(0)}
         exiting={FadeOut.duration(0)}
-        style={[styles.modal]}
         isVisible={isVisible}
+        onBackButtonPress={hideDrop}
+        onBackdropPress={hideDrop}
+        onModalHide={onClose}
+        onModalShow={onOpen}
+        style={[styles.modal]}
       >
         <View onLayout={onLayoutDrop} style={contentModalStyle}>
           <FlatList
             data={data}
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
             keyExtractor={keyExtractor}
             renderItem={_renderItem}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
           />
         </View>
       </Modal>

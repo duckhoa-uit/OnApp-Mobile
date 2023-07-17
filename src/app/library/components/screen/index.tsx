@@ -86,39 +86,39 @@ const InsetComponent = ({
   return (
     <>
       <FocusAwareStatusBar
-        hidden={hiddenStatusBar}
         backgroundColor={'transparent'}
-        translucent
         barStyle={statusBarStyle || 'light-content'}
+        hidden={hiddenStatusBar}
+        translucent
       />
       {!unsafe && edges.includes('top') && (
         <Inset
           color={statusColor}
-          top={0}
           height={inset.top}
+          top={0}
           width={screenWidth}
         />
       )}
       {!unsafe && edges.includes('left') && (
         <Inset
           color={leftInsetColor}
-          left={0}
           height={screenHeight}
+          left={0}
           width={inset.left}
         />
       )}
       {!unsafe && edges.includes('right') && (
         <Inset
           color={rightInsetColor}
-          right={0}
           height={screenHeight}
+          right={0}
           width={inset.right}
         />
       )}
       {!unsafe && edges.includes('bottom') && (
         <Inset
-          color={bottomInsetColor}
           bottom={0}
+          color={bottomInsetColor}
           height={inset.bottom}
           width={screenWidth}
         />
@@ -159,16 +159,16 @@ function ScreenWithoutScrolling(
           backgroundColor ? { backgroundColor } : {},
         ]}
       >
-        <View style={[styles.flex]} children={children} />
+        <View style={[styles.flex]}>{children}</View>
       </Wrapper>
       <InsetComponent
-        edges={edges}
         bottomInsetColor={bottomInsetColor}
-        statusColor={statusColor}
-        statusBarStyle={statusBarStyle}
+        edges={edges}
         hiddenStatusBar={hiddenStatusBar}
         leftInsetColor={leftInsetColor}
         rightInsetColor={rightInsetColor}
+        statusBarStyle={statusBarStyle}
+        statusColor={statusColor}
         unsafe={actualUnsafe}
       />
     </>
@@ -202,25 +202,26 @@ function ScreenWithScrolling(
     <>
       <Wrapper edges={edges} style={[styles.outer]}>
         <Animated.ScrollView
-          scrollEventThrottle={16}
-          onScroll={onScroll}
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-          overScrollMode={'never'}
-          style={[styles.inner, backgroundColor ? { backgroundColor } : {}]}
           contentContainerStyle={[style]}
-          children={children}
-        />
+          keyboardShouldPersistTaps="handled"
+          onScroll={onScroll}
+          overScrollMode={'never'}
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          style={[styles.inner, backgroundColor ? { backgroundColor } : {}]}
+        >
+          {children}
+        </Animated.ScrollView>
       </Wrapper>
       <InsetComponent
-        edges={edges}
         bottomInsetColor={bottomInsetColor}
-        statusColor={statusColor}
-        statusBarStyle={statusBarStyle}
+        edges={edges}
         hiddenStatusBar={hiddenStatusBar}
         leftInsetColor={leftInsetColor}
         rightInsetColor={rightInsetColor}
+        statusBarStyle={statusBarStyle}
+        statusColor={statusColor}
         unsafe={actualUnsafe}
       />
     </>

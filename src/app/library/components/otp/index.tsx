@@ -70,16 +70,16 @@ export const Otp = ({
     <TouchableWithoutFeedback onPress={setFocus}>
       <View style={[styles.wrap, styles.row, containerStyle]}>
         <TextInput
-          ref={_inputRef}
-          value={otp}
-          onFocus={onFocus}
-          onBlur={onBlur}
           autoCapitalize={'none'}
           autoFocus={false}
-          underlineColorAndroid={'transparent'}
+          onBlur={onBlur}
           onChangeText={onOtpChange}
+          onFocus={onFocus}
+          ref={_inputRef}
           selectionColor={'transparent'}
           style={styles.input}
+          underlineColorAndroid={'transparent'}
+          value={otp}
           {...rest}
         />
         {length &&

@@ -77,14 +77,14 @@ const LightBoxComponent = ({ source }: LightBoxProps) => {
   // render
   return (
     <>
-      <View ref={_refRoot} collapsable={false} style={[styles.container]}>
+      <View collapsable={false} ref={_refRoot} style={[styles.container]}>
         <TouchableOpacity disabled={disableButton} onPress={_onImagePress}>
           <Animated.View style={imageStyle}>
             <Image
               onLoad={_onLoadedImage}
-              style={[styles.img]}
-              source={source}
               resizeMode={'cover'}
+              source={source}
+              style={[styles.img]}
             />
           </Animated.View>
         </TouchableOpacity>

@@ -14,6 +14,9 @@ export type FormRegisterType = {
   email: string;
   name: string;
   password: string;
+  confirmPassword: string;
+  date: string;
+  phone: string;
 };
 
 export interface AuthenticationState {

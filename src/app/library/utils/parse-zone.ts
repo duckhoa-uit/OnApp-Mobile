@@ -36,7 +36,8 @@ export function parseZone(
 
   const [, dateTime, sign, tzHour, tzMinute] = match;
 
-  const uOffset: number = parseInt(tzHour) * 60 + parseInt(tzMinute, 10);
+  const uOffset = parseInt(tzHour, 10) * 60 + parseInt(tzMinute, 10);
+  // const uOffset: number = parseInt(tzHour) * 60 + parseInt(tzMinute, 10);
 
   const offset = sign === '+' ? uOffset : -uOffset;
 

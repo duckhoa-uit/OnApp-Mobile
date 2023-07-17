@@ -82,14 +82,14 @@ export const ActionSheet = forwardRef((props: ActionSheetProps, ref) => {
   // render
   return (
     <Modal
-      style={[styles.modal]}
+      backdropColor={backDropColor}
       backdropOpacity={1}
       entering={SlideInDown}
       exiting={SlideOutDown}
-      onBackdropPress={onBackDropPress}
-      onBackButtonPress={onCancel}
       isVisible={actionVisible}
-      backdropColor={backDropColor}
+      onBackButtonPress={onCancel}
+      onBackdropPress={onBackDropPress}
+      style={[styles.modal]}
     >
       <View style={[styles.wrap, rootStyle]}>
         <View style={[styles.wrapOption, wrapOptionStyle]}>
@@ -99,16 +99,16 @@ export const ActionSheet = forwardRef((props: ActionSheetProps, ref) => {
             ) : (
               <>
                 <View style={[styles.wrapTitle]}>
-                  <Text style={[styles.title]} children={title + ''} />
+                  <Text children={title + ''} style={[styles.title]} />
                 </View>
                 <Divider />
               </>
             ))}
           {option.map((item: OptionData, index: number) => {
             return (
-              <Button onPress={onPress(item, index)} key={item.text}>
+              <Button key={item.text} onPress={onPress(item, index)}>
                 <View style={[styles.wrapTextOption]}>
-                  <Text style={[textOptionStyle]} children={item.text} />
+                  <Text children={item.text} style={[textOptionStyle]} />
                 </View>
               </Button>
             );
@@ -118,8 +118,8 @@ export const ActionSheet = forwardRef((props: ActionSheetProps, ref) => {
           <Button onPress={onCancel}>
             <View style={[styles.wrapTextCancel]}>
               <Text
-                style={[styles.textCancel, textCancelStyleOverwrite]}
                 children={textCancel}
+                style={[styles.textCancel, textCancelStyleOverwrite]}
               />
             </View>
           </Button>
