@@ -46,29 +46,39 @@ export const useHomeStyle = () => {
           width: '100%',
           height: 48,
         },
+
+        bigButtonSection: {
+          marginTop: 10,
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+
         redBox: {
-          flex: 1,
+          width: '50%',
           height: 188,
-          flexDirection: 'column',
-          backgroundColor: '#FF5F5F',
-          borderRadius: 10,
+          backgroundColor: theme.colors.primaryLight,
+          borderRadius: 8,
           alignItems: 'center',
           padding: 14,
         },
+
         whiteBox: {
           width: '100%',
-          height: 110,
+          height: 112,
           marginTop: 14,
           backgroundColor: '#F3F8FA',
-          borderRadius: 10,
+          borderRadius: 8,
           alignItems: 'center',
           justifyContent: 'center',
           padding: 6,
+          paddingRight: 105,
         },
+
         coverImg: {
           height: 100,
           width: 100,
-          objectFit: 'cover',
         },
         bigButtonText: {
           fontSize: 12,
@@ -80,6 +90,6 @@ export const useHomeStyle = () => {
           marginTop: 16,
         },
       }),
-    [theme.colors.primary],
+    [theme.colors.primaryLight],
   );
 };

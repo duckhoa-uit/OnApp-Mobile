@@ -70,12 +70,12 @@ const ConfirmBookingScreen = () => {
     try {
       dispatch(appActions.startProcess());
 
-      await NetWorkService.Post<AppointmentApiResponse>({
+      const res = await NetWorkService.Post<AppointmentApiResponse>({
         url: ApiConstants.CREATE_APPOINTMENT,
         body: payload,
       });
 
-      // console.log('🚀 ~ file: index.tsx:71 ~ bookAppointment ~ res:', res);
+      console.log('🚀 ~ file: index.tsx:71 ~ bookAppointment ~ res:', res);
     } catch (error) {
       console.log('🚀 ~ file: index.tsx:69 ~ bookAppointment ~ error:', error);
     } finally {
