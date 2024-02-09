@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
+import { useRefetchOnFocus } from '@common';
 import {
   Block,
   ListView,
@@ -29,9 +30,12 @@ const ConsulterListComponent = () => {
     data: consulters,
     isLoading,
     fetchStatus,
+    refetch,
   } = useQueryConsulters({
     variables: {},
   });
+
+  useRefetchOnFocus(refetch);
 
   // render
   return (

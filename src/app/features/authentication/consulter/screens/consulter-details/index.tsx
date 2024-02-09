@@ -28,11 +28,6 @@ const ConsulterDetailsComponent = () => {
 
   useEffect(() => {
     setTimeZone(localStorageTimeZone() ?? dayjs.tz.guess());
-
-    console.log(
-      '🚀 ~ file: index.tsx:30 ~ useEffect ~ dayjs.tz.guess():',
-      dayjs.tz.guess(),
-    );
   }, []);
 
   const timeFormat = detectBrowserTimeFormat;
@@ -103,9 +98,6 @@ const ConsulterDetailsComponent = () => {
           <SlotPicker
             consulter={consulter}
             eventType={eventType}
-            onTimeFormatChange={(is24Hour: boolean) => {
-              console.log('🚀 ~ file: index.tsx:150 ~ is24Hour:', is24Hour);
-            }}
             timeFormat={timeFormat}
             timeZone={timeZone}
             users={userList}

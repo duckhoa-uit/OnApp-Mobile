@@ -1,4 +1,8 @@
-import { STORAGE_KEY_TOKEN, validResponse } from '@common';
+import {
+  STORAGE_KEY_TOKEN,
+  STORAGE_STREAMCHAT_TOKEN,
+  validResponse,
+} from '@common';
 import { takeLatestListeners } from '@listener';
 import { LoginApiResponse } from '@model/authentication';
 import { UserApiGetResponse } from '@model/user';
@@ -26,11 +30,17 @@ takeLatestListeners(true)({
 
     if (validResponse(response)) {
       // TODO: do something when login success
-      const token = response.data.data.access_token;
+      const { access_token } = response.data.data;
 
-      saveString(STORAGE_KEY_TOKEN, token);
+      const { streamchat_token } = response.data.data;
 
-      listenerApi.dispatch(appActions.setToken(token));
+      saveString(STORAGE_KEY_TOKEN, access_token);
+
+      saveString(STORAGE_STREAMCHAT_TOKEN, streamchat_token);
+
+      listenerApi.dispatch(appActions.setToken(access_token));
+
+      listenerApi.dispatch(appActions.setStreamChatToken(streamchat_token));
 
       const userResp = await NetWorkService.Get<UserApiGetResponse>({
         url: ApiConstants.GET_ME,
@@ -45,6 +55,11 @@ takeLatestListeners(true)({
 
         listenerApi.dispatch(appActions.setAppProfile(userData));
       }
+    } else {
+      console.log(
+        '🚀 ~ file: authentication.ts:26 ~ effect: ~ response:',
+        response,
+      );
     }
   },
 });

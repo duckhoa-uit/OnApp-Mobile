@@ -12,14 +12,12 @@ export const useDatePickerHorizontalStyle = (isActive: boolean) => {
     () =>
       StyleSheet.create({
         dateCardContainer: {
-          flexDirection: 'column',
           padding: 12,
           borderRadius: 10,
           borderWidth: 1,
           borderColor: ColorDefault.line,
           height: 72,
           width: 56,
-          alignItems: 'center',
           backgroundColor: isActive ? ColorDefault.primary : '#fff',
         },
         dateString: {

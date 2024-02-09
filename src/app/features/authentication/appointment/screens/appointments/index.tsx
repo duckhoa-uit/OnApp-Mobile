@@ -67,8 +67,7 @@ const AppointmentsScreen = () => {
   //   })();
   // }, []);
 
-  const { scrollY, index, setIndex, getRefForKey, ...sceneProps } =
-    useScrollManager(tabs);
+  const { scrollY, index, setIndex, ...sceneProps } = useScrollManager(tabs);
 
   const {
     data: appointments,
@@ -97,7 +96,7 @@ const AppointmentsScreen = () => {
         {...sceneProps}
       />
     ),
-    [getRefForKey, index, scrollY, appointments],
+    [fetchStatus, isLoading, appointments, index, scrollY, sceneProps],
   );
 
   // render

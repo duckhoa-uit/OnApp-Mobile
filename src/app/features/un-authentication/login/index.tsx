@@ -27,14 +27,8 @@ export const Login = () => {
     dispatch(
       authenticationActions.login(
         payload,
-        () => {
-          console.log('login thanhf cong ne');
-
-          dispatch(appActions.endProcess());
-        },
-        () => {
-          dispatch(appActions.endProcess());
-        },
+        () => dispatch(appActions.endProcess()),
+        () => dispatch(appActions.endProcess()),
       ),
     );
   };

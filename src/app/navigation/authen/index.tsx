@@ -3,10 +3,12 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { VectorIcon } from '@assets/vector-icon/vector-icon';
+import ChatContextProvider from '@features/authentication/chat/context';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { AppointmentsStack } from './appointment-stack';
+import { ChatStack } from './chat-stack';
 import { HomeStack } from './home-stack';
 
 const Main = createBottomTabNavigator();
@@ -38,8 +40,8 @@ export const MainScreen = () => {
         }}
       />
       <Main.Screen
-        component={HomeStack}
-        name={APP_SCREEN.MESSAGE_STACK}
+        component={ChatStack}
+        name={APP_SCREEN.CHAT_STACK}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -55,7 +57,7 @@ export const MainScreen = () => {
       />
       <Main.Screen
         component={AppointmentsStack}
-        name={APP_SCREEN.CALENDAR_STACK}
+        name={APP_SCREEN.APPOINTMENTS_STACK}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (

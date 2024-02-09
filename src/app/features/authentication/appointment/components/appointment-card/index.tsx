@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleProp, View, ViewStyle } from 'react-native';
 
+import { images } from '@assets/image';
 import { VectorIcon } from '@assets/vector-icon/vector-icon';
 import { Block, Icon, Text } from '@components';
 import { Appointment } from '@model/appointment';
@@ -58,7 +59,11 @@ const AppointmentCard = ({ appointment }: AppointmentCardProps) => {
         </View>
         <View style={styles.doctorImage}>
           <Image
-            source={{ uri: appointment.createdBy?.photo }}
+            source={
+              appointment.createdBy?.photo
+                ? { uri: appointment.createdBy.photo }
+                : images.default_avt
+            }
             style={{ width: '100%', height: '100%' }}
           />
         </View>

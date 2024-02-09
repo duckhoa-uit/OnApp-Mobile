@@ -1,6 +1,7 @@
 import { ApiBaseResponse } from '@networking';
 import { TypeOf, z } from 'zod';
 
+import { Payment } from './payment';
 import { User } from './user';
 
 export enum BookingStatus {
@@ -77,4 +78,6 @@ export type GetUserAppointmentsQueryParams = TypeOf<
 
 export type AppointmentCreateBody = z.input<typeof appointmentCreateBodySchema>;
 
-export type AppointmentApiResponse = ApiBaseResponse<Appointment>;
+export type AppointmentApiResponse = ApiBaseResponse<
+  Appointment & { payment: Payment[] }
+>;

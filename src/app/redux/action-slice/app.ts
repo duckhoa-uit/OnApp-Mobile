@@ -8,6 +8,7 @@ const initialAppState: AppState = {
   internetState: true,
   profile: null,
   token: undefined,
+  streamChatToken: undefined,
   /**
    * default true to load app
    */
@@ -25,6 +26,9 @@ const appSlice = createSlice({
     },
     setToken: (state, { payload }: PayloadAction<string>) => {
       state.token = payload;
+    },
+    setStreamChatToken: (state, { payload }: PayloadAction<string>) => {
+      state.streamChatToken = payload;
     },
     setAppProfile: (state, { payload }: PayloadAction<User>) => {
       state.profile = payload;
@@ -46,6 +50,8 @@ const appSlice = createSlice({
     },
     logout: state => {
       state.token = undefined;
+
+      state.streamChatToken = undefined;
 
       state.profile = null;
     },

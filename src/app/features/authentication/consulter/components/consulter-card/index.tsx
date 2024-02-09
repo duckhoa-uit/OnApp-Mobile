@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleProp, View, ViewStyle } from 'react-native';
 
+import { images } from '@assets/image';
 import { Button, Icon, Text } from '@components';
 import ConditionalWrapper from '@components/conditional-wrapper';
 import { User } from '@model/user';
@@ -35,7 +36,9 @@ const ConsulterCard = ({
       <View style={[styles.BigButton, style]}>
         <View style={styles.doctorImage}>
           <Image
-            source={{ uri: consulter.photo }}
+            source={
+              consulter.photo ? { uri: consulter.photo } : images.default_avt
+            }
             style={{ width: '100%', height: '100%' }}
           />
         </View>

@@ -9,6 +9,8 @@ export interface AppState {
 
   token: string | undefined;
 
+  streamChatToken: string | undefined;
+
   loadingApp: boolean;
 
   showDialog: boolean;

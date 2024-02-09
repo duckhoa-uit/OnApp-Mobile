@@ -25,6 +25,23 @@ export const useAvailableTimesStyle = (isActive?: boolean) => {
           width: (screenWidth - 40 - 12 * 2) / 3,
           height: 36,
         },
+        // className="-mt-4 flex h-full w-full flex-col content-center items-center justify-center"
+        allBookedContainer: {
+          marginTop: -16,
+          display: 'flex',
+          height: '100%',
+          width: '100%',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignContent: 'center',
+        },
+        // className="text-emphasis my-6 text-xl"
+        allBookedText: {
+          textAlign: 'center',
+          color: ColorDefault.text,
+          marginVertical: 24,
+        },
       }),
     [isActive, screenWidth],
   );

@@ -200,8 +200,6 @@ export const SliderRange = forwardRef(
       ref,
       () => ({
         setRange: (args: ArgsChangeRange) => {
-          console.log(JSON.stringify(args));
-
           runAnimation(
             args.reverted ? args.upper : args.lower,
             !args.reverted ? args.upper : args.lower,

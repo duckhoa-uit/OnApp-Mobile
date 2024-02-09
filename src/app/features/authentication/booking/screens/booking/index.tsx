@@ -19,7 +19,7 @@ import {
   AppointmentCreateBody,
 } from '@model/appointment';
 import { EventType, EventTypeApiResponse } from '@model/event-type';
-import { goBack } from '@navigation/navigation-service';
+import { goBack, replaceScreen } from '@navigation/navigation-service';
 import { APP_SCREEN, RootRouteProps } from '@navigation/screen-types';
 import { ApiConstants, NetWorkService } from '@networking';
 import { useRoute } from '@react-navigation/native';
@@ -62,11 +62,6 @@ const ConfirmBookingScreen = () => {
       // user: router.query.user,
     };
 
-    console.log(
-      '🚀 ~ file: index.tsx:65 ~ bookAppointment ~ payload:',
-      payload,
-    );
-
     try {
       dispatch(appActions.startProcess());
 
@@ -74,6 +69,15 @@ const ConfirmBookingScreen = () => {
         url: ApiConstants.CREATE_APPOINTMENT,
         body: payload,
       });
+
+      if (res && validResponse(res)) {
+        const appointment = res.data.data;
+
+        replaceScreen(APP_SCREEN.CONFIRM_PAYMENT, {
+          appointmentId: appointment.id,
+          amount: appointment.payment[0].amount,
+        });
+      }
 
       console.log('🚀 ~ file: index.tsx:71 ~ bookAppointment ~ res:', res);
     } catch (error) {
@@ -199,7 +203,7 @@ const ConfirmBookingScreen = () => {
                 fontWeight={'900'}
                 lineHeight={19}
               >
-                VISA
+                ATM
               </Text>
               <Button>
                 <Text colorTheme="textSecondary" fontSize={12} lineHeight={15}>
@@ -210,7 +214,11 @@ const ConfirmBookingScreen = () => {
           </Block>
         </Block>
 
-        <Block paddingHorizontal={20} style={styles.submitArea}>
+        <Block
+          paddingBottom={10}
+          paddingHorizontal={20}
+          style={styles.submitArea}
+        >
           <Block style={styles.priceSummary}>
             <Text
               colorTheme="textSecondary"
@@ -221,7 +229,7 @@ const ConfirmBookingScreen = () => {
               Tổng cộng
             </Text>
             <Text fontSize={18} fontWeight={'600'} lineHeight={22}>
-              500.000VNĐ
+              {new Intl.NumberFormat().format(eventType?.price ?? 0)}VNĐ
             </Text>
           </Block>
           <Block style={styles.submitBtnContainer}>

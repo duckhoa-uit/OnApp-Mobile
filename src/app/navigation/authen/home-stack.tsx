@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ConfirmBooking } from '@features/authentication/booking/screens/booking';
+import { ConfirmPayment } from '@features/authentication/booking/screens/confirm-payment';
 import { ConsulterDetails } from '@features/authentication/consulter/screens/consulter-details';
 import { ConsulterList } from '@features/authentication/consulter/screens/consulter-list';
 import { Home } from '@features/authentication/home';
@@ -56,6 +57,10 @@ export const HomeStack = () => {
       <Stack.Screen
         component={ConfirmBooking}
         name={APP_SCREEN.CONFIRM_BOOKING}
+      />
+      <Stack.Screen
+        component={ConfirmPayment}
+        name={APP_SCREEN.CONFIRM_PAYMENT}
       />
     </Stack.Navigator>
   );

@@ -15,6 +15,11 @@ export const selectAppToken = createDeepEqualSelector(
   app => app.token,
 );
 
+export const selectStreamChatToken = createDeepEqualSelector(
+  (state: RootState) => state.app,
+  app => app.streamChatToken,
+);
+
 export const selectAppProfile = createDeepEqualSelector(
   (state: RootState) => state.app,
   app => app.profile,

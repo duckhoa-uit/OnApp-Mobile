@@ -367,6 +367,10 @@ export {
   useEventCallback,
 };
 
+export * from './use-app-state-active';
+
+export * from './use-refetch-on-focus';
+
 export * from './use-slots';
 
 export * from './use-scroll-manager';

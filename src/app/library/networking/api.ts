@@ -11,6 +11,8 @@ const ApiEndPoint = {
   REMOVE_MARKED_SLOT: 'slots',
 
   CREATE_APPOINTMENT: 'appointments',
+  CHECK_PAYMENT: 'appointments/payment-status',
+  VIETQR_PAYMENT_QR: 'generate',
   GET_USER_APPOINTMENTS: 'appointments',
   GET_APPOINTMENT_UID: 'appointments/get-uid',
   GET_APPOINTMENT_BY_UID: 'appointments',
@@ -24,7 +26,11 @@ const configApi = () => {
   Object.keys(ApiEndPoint).forEach(x => {
     const valueApi = ApiEndPoint[x as keyof typeof ApiEndPoint];
 
-    apiOb[x] = API_VERSION + valueApi;
+    if (x.startsWith('VIETQR')) {
+      apiOb[x] = valueApi;
+    } else {
+      apiOb[x] = API_VERSION + valueApi;
+    }
   });
 
   return apiOb;
@@ -42,6 +48,14 @@ export type ApiErrorResponse = {
 export type ApiBaseResponse<T> = {
   status: 'success';
   data: T;
+};
+
+export type VietQrResponse<T> = {
+  code: number;
+  data: {
+    code: number;
+    data: T;
+  };
 };
 
 export const ApiConstants = configApi() as ApiConstantsType<typeof ApiEndPoint>;

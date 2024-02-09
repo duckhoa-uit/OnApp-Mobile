@@ -85,7 +85,6 @@ const DatePickerHorizontal = ({
 }: DatePickerProps & {
   browsingDate: Dayjs;
   weekStart: number;
-  month: string | null;
 }) => {
   const { width: screenWidth } = useWindowDimensions();
 
@@ -146,6 +145,7 @@ const DatePickerHorizontal = ({
   //       new Date(browsingDate.year(), browsingDate.month()),
   //     )
   //   : null;
+
   const renderItem: ListRenderItem<dayjs.Dayjs> = useCallback(
     ({ item }) => (
       <DateCard
@@ -171,7 +171,9 @@ const DatePickerHorizontal = ({
   return (
     <FlatList
       ItemSeparatorComponent={DateSlotsDivider}
-      contentContainerStyle={{ paddingHorizontal: 20 }}
+      contentContainerStyle={{
+        paddingHorizontal: 20,
+      }}
       data={nonNullableDays}
       decelerationRate={0}
       horizontal={true}

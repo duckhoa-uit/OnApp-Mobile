@@ -70,5 +70,9 @@
 		<string>Inter-SemiBold.ttf</string>
 		<string>Inter-Thin.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Chat module would like to send a photo.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Chat module would like to send a photo.</string>
 </dict>
 </plist>

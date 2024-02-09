@@ -31,7 +31,7 @@ const processDate = (
     ', ' +
     dayjs(date as ConfigType)
       .toDate()
-      .toLocaleString(language, { dateStyle: 'long' })
+      .toLocaleString(language, { dateStyle: 'full' })
   );
 };
 

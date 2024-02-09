@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
 import { useSelector } from 'react-redux';
 
+import ChatContextProvider from '@features/authentication/chat/context';
 import { Login } from '@features/un-authentication/login';
 import { Register } from '@features/un-authentication/register';
 import { APP_SCREEN, RootStackParamList } from '@navigation/screen-types';
@@ -27,27 +28,29 @@ export const RootNavigation = () => {
   }, []);
 
   // render
-  return (
+  return token === undefined ? (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-      {token === undefined ? (
-        <RootStack.Group
-          screenOptions={{
-            freezeOnBlur: true,
-            animationTypeForReplace: 'pop',
-            gestureEnabled: true,
-          }}
-        >
-          <RootStack.Screen component={Login} name={APP_SCREEN.LOGIN} />
-          <RootStack.Screen component={Register} name={APP_SCREEN.REGISTER} />
-        </RootStack.Group>
-      ) : (
+      <RootStack.Group
+        screenOptions={{
+          freezeOnBlur: true,
+          animationTypeForReplace: 'pop',
+          gestureEnabled: true,
+        }}
+      >
+        <RootStack.Screen component={Login} name={APP_SCREEN.LOGIN} />
+        <RootStack.Screen component={Register} name={APP_SCREEN.REGISTER} />
+      </RootStack.Group>
+    </RootStack.Navigator>
+  ) : (
+    <ChatContextProvider>
+      <RootStack.Navigator screenOptions={{ headerShown: false }}>
         <RootStack.Group>
           <RootStack.Screen
             component={MainScreen}
             name={APP_SCREEN.AUTHORIZE}
           />
         </RootStack.Group>
-      )}
-    </RootStack.Navigator>
+      </RootStack.Navigator>
+    </ChatContextProvider>
   );
 };

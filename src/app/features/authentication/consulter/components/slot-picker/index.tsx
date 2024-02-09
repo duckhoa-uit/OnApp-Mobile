@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { dispatch } from '@common';
-import { Block, Divider, Text, TouchableScale } from '@components';
+import {
+  Block,
+  Button,
+  Divider,
+  Icon,
+  Text,
+  TouchableScale,
+} from '@components';
+import { useChatContext } from '@features/authentication/chat/context';
 import { useSlots } from '@hooks';
 import { TimeFormat } from '@model/app';
 import { EventType } from '@model/event-type';
@@ -22,26 +30,24 @@ const SlotPicker = ({
   consulter,
   eventType,
   timeFormat,
-  onTimeFormatChange,
   timeZone,
   // recurringEventCount,
   users = [],
   seatsPerTimeSlot,
-  bookingAttendees,
   weekStart = 0,
 }: {
   consulter: User;
   eventType: Pick<EventType, 'id' | 'slug' | 'length'>;
   timeFormat: TimeFormat;
-  onTimeFormatChange: (is24Hour: boolean) => void;
   timeZone?: string;
   seatsPerTimeSlot?: number;
-  bookingAttendees?: number;
   recurringEventCount?: number;
   users?: string[];
   weekStart?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   ethSignature?: string;
 }) => {
+  const { startDMChatRoom } = useChatContext();
+
   const [selectedDate, setSelectedDate] = useState<Dayjs>();
 
   const styles = useSlotPickerStyle(!!selectedDate);
@@ -50,7 +56,7 @@ const SlotPicker = ({
 
   const [date, setDate] = useState<string>();
 
-  const [month, setMonth] = useState<string>();
+  const [month] = useState<string>();
 
   const [selectedSlot, setSelectedSlot] = useState<Slot>();
 
@@ -61,7 +67,7 @@ const SlotPicker = ({
     if (timeZone === 'Etc/GMT') {
       setBrowsingDate(
         dayjs
-          .utc(month)
+          .utc()
           .set('date', 1)
           .set('hour', 0)
           .set('minute', 0)
@@ -87,7 +93,7 @@ const SlotPicker = ({
         setSelectedDate(dayjs.tz(date, timeZone));
       }
     }
-  }, [month, date, duration, timeZone]);
+  }, [date, month, duration, timeZone]);
 
   const { slots: monthSlots, isLoading } = useSlots({
     eventTypeId: eventType.id,
@@ -113,7 +119,7 @@ const SlotPicker = ({
     });
 
   /** Hide skeleton if we have the slot loaded in the month query */
-  const isLoadingSelectedDateSlots = (() => {
+  const isLoadingSelectedDateSlots = useMemo(() => {
     if (!selectedDate) {
       return _isLoadingSelectedDateSlots;
     }
@@ -127,7 +133,12 @@ const SlotPicker = ({
     }
 
     return false;
-  })();
+  }, [
+    _isLoadingSelectedDateSlots,
+    monthSlots,
+    selectedDate,
+    selectedDateSlots,
+  ]);
 
   const reserveSlot = () => {
     // FIXME: update selectedSlot to slot store in redux/storage
@@ -140,10 +151,6 @@ const SlotPicker = ({
           .utc()
           .add(parseInt(duration, 10), 'minute')
           .format(),
-        // FIXME: tam thoi k support limit attendees
-        // bookingAttendees: currentSlotBooking
-        //   ? currentSlotBooking.attendees.length
-        //   : undefined,
       };
 
       dispatch(appActions.startProcess());
@@ -152,8 +159,6 @@ const SlotPicker = ({
         slotActions.reserveSlot(
           payload,
           () => {
-            console.log('reserve slot success?');
-
             dispatch(appActions.endProcess());
 
             navigateScreen(APP_SCREEN.CONFIRM_BOOKING, {
@@ -180,41 +185,40 @@ const SlotPicker = ({
   };
 
   return (
-    <Block>
-      <DatePickerHorizontal
-        browsingDate={browsingDate || dayjs().startOf('month')}
-        includedDates={Object.keys(monthSlots).filter(
-          k => monthSlots[k].length > 0,
-        )}
-        //  FIXME: update locale variable when finish
-        isLoading={isLoading}
-        locale={'vi'}
-        month={month ?? ''}
-        onChange={newDate => {
-          console.log('change date', newDate);
-
-          setDate(newDate.format('YYYY-MM-DD'));
-        }}
-        onMonthChange={newMonth => {
-          setMonth(newMonth.format('YYYY-MM'));
-        }}
-        selected={selectedDate}
-        weekStart={weekStart}
-      />
+    <Block direction="column">
+      <Block>
+        <DatePickerHorizontal
+          browsingDate={browsingDate || dayjs().startOf('month')}
+          includedDates={Object.keys(monthSlots).filter(
+            k => monthSlots[k].length > 0,
+          )}
+          //  FIXME: update locale variable when finish
+          isLoading={isLoading}
+          locale={'vi'}
+          onChange={newDate => {
+            setDate(newDate.format('YYYY-MM-DD'));
+          }}
+          selected={selectedDate}
+          weekStart={weekStart}
+        />
+      </Block>
 
       <Block marginTop={30} paddingHorizontal={20}>
         <Divider colorTheme="line" />
       </Block>
 
-      <Block marginTop={30} paddingHorizontal={20}>
+      <Block
+        flex={1}
+        marginTop={30}
+        paddingHorizontal={20}
+        style={{ minHeight: 100 }}
+      >
         <AvailableTimes
-          bookingAttendees={bookingAttendees}
           date={selectedDate}
           eventTypeId={eventType.id}
           eventTypeSlug={eventType.slug}
           isLoading={isLoadingSelectedDateSlots}
           onSelectSlot={setSelectedSlot}
-          onTimeFormatChange={onTimeFormatChange}
           seatsPerTimeSlot={seatsPerTimeSlot}
           selectedSlot={selectedSlot}
           slots={
@@ -226,7 +230,15 @@ const SlotPicker = ({
         />
       </Block>
 
-      <Block block marginTop={30} paddingHorizontal={20}>
+      <Block direction="row" marginTop={30} paddingHorizontal={20}>
+        <Button
+          onPress={() => {
+            startDMChatRoom(consulter);
+          }}
+          style={styles.chatBtn}
+        >
+          <Icon icon="chat" />
+        </Button>
         <TouchableScale
           containerStyle={styles.submitBtn}
           // disabled={!!selectedSlot}

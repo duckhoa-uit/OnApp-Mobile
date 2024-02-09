@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
+import { HEADER_HEIGHT } from '@common';
+
 export const useNavigationBarStyle = () => {
   // state
 
@@ -10,7 +12,7 @@ export const useNavigationBarStyle = () => {
       StyleSheet.create({
         navigationBar: {
           flexDirection: 'row',
-          height: 44,
+          height: HEADER_HEIGHT,
           width: '100%',
           alignItems: 'center',
           justifyContent: 'space-between',

@@ -48,6 +48,10 @@ export const propsToStyle = (arrStyle: Array<any>) => {
 export const validResponse = (
   response: ResponseBase<any>,
 ): response is ResponseBase<any, true> => {
+  if (response.code === 200) {
+    return true;
+  }
+
   if (!response.status) {
     // TODO: handle error
     showSnack({ msg: response.msg ?? '', type: 'error' });

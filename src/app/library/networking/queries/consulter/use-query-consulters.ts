@@ -15,7 +15,7 @@ type Variables = {
 
 export const useQueryConsulters = createQuery<Response, Variables, AxiosError>({
   primaryKey: ApiConstants.GET_CONSULTER_LIST,
-  queryFn: ({ queryKey: [primaryKey, variables] }) => {
+  queryFn: async ({ queryKey: [primaryKey, variables] }) => {
     // in case if variables is needed, we can use destructuring to get it from queryKey array like this: ({ queryKey: [primaryKey, variables] })
     // primaryKey is 'posts' in this case
     return NetWorkService.Get<ApiBaseResponse<Response>>({

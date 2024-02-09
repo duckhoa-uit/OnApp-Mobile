@@ -18,6 +18,10 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
 
   // state
   const formMethod = useForm<FormLoginType>({
+    defaultValues: {
+      email: 'thuduyen1306@gmail.com',
+      password: 'Admin@123',
+    },
     resolver: zodResolver(loginValidation),
   });
 

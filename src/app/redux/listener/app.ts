@@ -2,6 +2,7 @@ import {
   checkKeyInObject,
   STORAGE_KEY_APP_THEME,
   STORAGE_KEY_TOKEN,
+  STORAGE_STREAMCHAT_TOKEN,
   validResponse,
 } from '@common';
 import { takeLatestListeners } from '@listener';
@@ -19,6 +20,13 @@ takeLatestListeners()({
 
     const token = loadString(STORAGE_KEY_TOKEN);
 
+    const streamchatToken = loadString(STORAGE_STREAMCHAT_TOKEN);
+
+    console.log(
+      '🚀 ~ file: app.ts:24 ~ effect: ~ streamchatToken:',
+      streamchatToken,
+    );
+
     if (typeof token === 'string') {
       listenerApi.dispatch(appActions.setToken(token));
 
@@ -34,8 +42,6 @@ takeLatestListeners()({
       if (validResponse(response)) {
         const userData = response.data.data;
 
-        console.log('🚀 ~ file: app.ts:36 ~ effect: ~ userData:', userData);
-
         listenerApi.dispatch(appActions.setAppProfile(userData));
       }
     }
@@ -45,6 +51,12 @@ takeLatestListeners()({
       checkKeyInObject(MyAppTheme, appTheme)
     ) {
       listenerApi.dispatch(appActions.setAppTheme(appTheme as ThemeType));
+    }
+
+    if (typeof streamchatToken === 'string') {
+      listenerApi.dispatch(
+        appActions.setStreamChatToken(streamchatToken as ThemeType),
+      );
     }
 
     listenerApi.dispatch(appActions.endLoadApp());

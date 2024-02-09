@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 
-import KeyboardManager from 'react-native-keyboard-manager';
 import { useSelector } from 'react-redux';
 
 import { dispatch, RXStore } from '@common';
@@ -38,10 +37,6 @@ export const AppContainer = () => {
     }
   }, [showDialog]);
 
-  useEffect(() => {
-    KeyboardManager.setKeyboardAppearance(theme);
-  }, [theme]);
-
   if (__DEV__) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useFlipper(navigationRef);
@@ -51,7 +46,7 @@ export const AppContainer = () => {
   return (
     <NavigationContainer ref={navigationRef} theme={MyAppTheme[theme]}>
       <>
-        <StatusBar translucent backgroundColor={'transparent'} />
+        <StatusBar backgroundColor={'transparent'} translucent />
         {!loadingApp && (
           <>
             <RootNavigation />

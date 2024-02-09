@@ -14,7 +14,6 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import KeyboardManager from 'react-native-keyboard-manager';
 import Animated, {
   runOnJS,
   useAnimatedStyle,
@@ -195,13 +194,7 @@ export const ModalContent = forwardRef(
     useDisableBackHandler(true, onBackButtonPress);
 
     useEffect(() => {
-      KeyboardManager.setEnable(false);
-
       openModal();
-
-      return () => {
-        KeyboardManager.setEnable(true);
-      };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

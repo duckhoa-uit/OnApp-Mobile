@@ -8,6 +8,7 @@ export type FormLoginType = {
 export type LoginApiResponse = ApiBaseResponse<{
   refresh_token: string;
   access_token: string;
+  streamchat_token: string;
 }>;
 
 export type FormRegisterType = {

@@ -12,12 +12,21 @@ export const useSlotPickerStyle = (isActive: boolean) => {
     () =>
       StyleSheet.create({
         submitBtn: {
-          width: '100%',
+          flex: 1,
           backgroundColor: isActive
             ? ColorDefault.primary
             : ColorDefault.primaryLight,
           borderRadius: 10,
           height: 60,
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginLeft: 10,
+        },
+        chatBtn: {
+          backgroundColor: ColorDefault.line,
+          borderRadius: 10,
+          height: 60,
+          width: 60,
           justifyContent: 'center',
           alignItems: 'center',
         },
