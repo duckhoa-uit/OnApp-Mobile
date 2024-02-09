@@ -57,8 +57,7 @@ const chatClient =
 const ChatContextProvider = ({ children }: { children: React.ReactNode }) => {
   const { bottom, top } = useSafeAreaInsets();
 
-  const [currentChannel, setCurrentChannel] =
-    useState<ChannelType<StreamChatGenerics>>();
+  const [currentChannel, setCurrentChannel] = useState<ChannelType>();
 
   const [clientReady, setClientReady] = useState(false);
 
@@ -86,14 +85,6 @@ const ChatContextProvider = ({ children }: { children: React.ReactNode }) => {
         setClientReady(true);
 
         await connectPromise;
-
-        // connect user to stream chat
-
-        // const globalChannel = chatClient.channel('livestream', 'global', {
-        //   name: 'notJust.dev',
-        // });
-
-        // await globalChannel.watch();
       } catch (error) {
         console.log(
           '🚀 ~ An error occurred while connecting the user to StreamChat:',
@@ -145,25 +136,25 @@ const ChatContextProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const joinEventChatRoom = async (event: any) => {
-    if (!chatClient) {
-      return;
-    }
+  // const joinEventChatRoom = async (event: any) => {
+  //   if (!chatClient) {
+  //     return;
+  //   }
 
-    const channelId = `room-${event.id}`;
+  //   const channelId = `room-${event.id}`;
 
-    const eventChannel = chatClient.channel('livestream', channelId, {
-      name: event.name,
-    });
+  //   const eventChannel = chatClient.channel('livestream', channelId, {
+  //     name: event.name,
+  //   });
 
-    await eventChannel.watch({ watchers: { limit: 100 } });
+  //   await eventChannel.watch({ watchers: { limit: 100 } });
 
-    setCurrentChannel(eventChannel);
+  //   setCurrentChannel(eventChannel);
 
-    navigateScreen(APP_SCREEN.CHATS);
+  //   navigateScreen(APP_SCREEN.CHATS);
 
-    navigateScreen(APP_SCREEN.CHAT_ROOM);
-  };
+  //   navigateScreen(APP_SCREEN.CHAT_ROOM);
+  // };
 
   if (!chatClient) {
     return <ActivityIndicator />;
@@ -175,7 +166,7 @@ const ChatContextProvider = ({ children }: { children: React.ReactNode }) => {
     currentChannel,
     setCurrentChannel,
     startDMChatRoom,
-    joinEventChatRoom,
+    // joinEventChatRoom,
   };
 
   if (!chatClient) {

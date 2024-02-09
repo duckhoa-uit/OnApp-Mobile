@@ -13,23 +13,23 @@ const chatClient = StreamChat.getInstance(STREAM_CHAT_API_KEY);
 export const useChatClient = () => {
   const [clientIsReady, setClientIsReady] = useState(false);
 
-  const profile = useSelector(selectAppProfile);
+  const loggedUser = useSelector(selectAppProfile);
 
   const streamChatToken = useSelector(selectStreamChatToken);
 
   useEffect(() => {
-    if (!profile || !streamChatToken) {
+    if (!loggedUser || !streamChatToken) {
       return;
     }
 
     const setupClient = async () => {
-      const user = {
-        id: profile?.id,
-        name: profile?.name,
+      const streamUser = {
+        id: loggedUser.id,
+        name: loggedUser.name,
       };
 
       try {
-        chatClient.connectUser(user, streamChatToken);
+        chatClient.connectUser(streamUser, streamChatToken);
 
         setClientIsReady(true);
 
@@ -57,7 +57,7 @@ export const useChatClient = () => {
         chatClient.disconnectUser();
       }
     };
-  }, [profile, streamChatToken]);
+  }, [loggedUser, streamChatToken]);
 
   return {
     clientIsReady,

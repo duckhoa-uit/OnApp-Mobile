@@ -1,14 +1,13 @@
 import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
-import {
-  KeyboardAvoidingView,
-  KeyboardGestureArea,
-} from 'react-native-keyboard-controller';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { useSelector } from 'react-redux';
 
 import { NavigationBar, Screen } from '@components';
-import { goBack, replaceScreen } from '@navigation/navigation-service';
+import { replaceScreen } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
+import { selectAppProfile } from '@redux-selector/app';
 import { useTheme } from '@theme';
 import { Channel, MessageInput, MessageList } from 'stream-chat-react-native';
 
@@ -20,9 +19,17 @@ const ChatRoomScreenComponent = () => {
 
   const { currentChannel } = useChatContext();
 
-  if (!currentChannel) {
+  const loggedUser = useSelector(selectAppProfile);
+
+  if (!currentChannel || !loggedUser) {
     return null;
   }
+
+  const [dmUserId] = Object.keys(currentChannel.state.members).filter(
+    m => m !== loggedUser.id,
+  );
+
+  const dmUser = currentChannel.state.members[dmUserId].user;
 
   return (
     <Screen
@@ -43,7 +50,7 @@ const ChatRoomScreenComponent = () => {
         >
           <NavigationBar
             callback={() => replaceScreen(APP_SCREEN.CHATS)}
-            title={currentChannel.data?.name || 'Channel'}
+            title={dmUser?.name || 'Channel'}
           />
           <MessageList />
           <MessageInput />
