@@ -90,7 +90,6 @@ export const useConfirmBookingScreenStyle = () => {
           fontWeight: '900',
           fontSize: 16,
           lineHeight: 19,
-          // color: colors.GRAY,
         },
         priceSummary: {
           flexDirection: 'column',
@@ -99,12 +98,11 @@ export const useConfirmBookingScreenStyle = () => {
 
         submitArea: {
           width: '100%',
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginTop: 25,
+          backgroundColor: 'red',
         },
         submitBtnContainer: {
           flex: 1,
+          width: '100%',
         },
         submitBtn: {
           backgroundColor: theme.colors.primary,
@@ -113,13 +111,28 @@ export const useConfirmBookingScreenStyle = () => {
           height: 60,
           justifyContent: 'center',
           alignItems: 'center',
+          marginTop: 20,
         },
         textBtn: {
           color: '#fff',
           fontWeight: 'bold',
           fontSize: 14,
         },
+        checkLaterBtn: {
+          backgroundColor: theme.colors.border,
+          width: '100%',
+          borderRadius: 10,
+          height: 60,
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 90,
+        },
+        checkLaterText: {
+          color: theme.colors.card,
+          fontWeight: 'bold',
+          fontSize: 14,
+        },
       }),
-    [theme.colors.primary],
+    [theme.colors.border, theme.colors.card, theme.colors.primary],
   );
 };

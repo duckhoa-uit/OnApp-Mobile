@@ -24,10 +24,9 @@ export const useQueryPaymentQr = createQuery<Response, Variables, AxiosError>({
       body: {
         accountNo: '1014414697',
         accountName: 'DANG THI THU DUYEN',
-        //VIETCOMBANK
         acqId: '970436',
         amount: variables.amount,
-        addInfo: `PMONAPP${variables.appointmentId}`,
+        addInfo: `ONAPP ${variables.appointmentId}`,
         format: 'text',
         template: 'compact',
       },

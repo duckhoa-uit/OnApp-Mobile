@@ -107,6 +107,8 @@ function Request<T = Record<string, unknown>>(config: ParamsNetwork) {
         rs(result);
       })
       .catch((error: AxiosError<T>) => {
+        console.log('🚀 ~ error:', JSON.stringify(error));
+
         if (error.code === AxiosError.ERR_CANCELED) {
           rs(null);
         }

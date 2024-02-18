@@ -42,31 +42,6 @@ const ConsulterDetailsComponent = () => {
     ? eventType.users.map(user => user.username).filter(notEmpty)
     : [];
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!eventType) {
-  //       return;
-  //     }
-
-  //     const response = await NetWorkService.Get<
-  //       ApiBaseResponse<Record<string, TimeSlot[]>>
-  //     >({
-  //       url: ApiConstants.GET_SLOT,
-  //       params: {},
-  //     });
-
-  //     if (!response) {
-  //       return;
-  //     }
-
-  //     if (validResponse(response)) {
-  //       const _users = response.data.data;
-
-  //       console.log('🚀 ~ file: index.tsx:33 ~ userData:', _users);
-  //     }
-  //   })();
-  // }, []);
-
   // render
   return (
     <Block block justifyContent="center" paddingTop={0}>

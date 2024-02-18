@@ -79,5 +79,5 @@ export type GetUserAppointmentsQueryParams = TypeOf<
 export type AppointmentCreateBody = z.input<typeof appointmentCreateBodySchema>;
 
 export type AppointmentApiResponse = ApiBaseResponse<
-  Appointment & { payment: Payment[] }
+  Appointment & { payment: Payment }
 >;

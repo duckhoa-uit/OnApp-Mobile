@@ -31,7 +31,6 @@ const SlotPicker = ({
   eventType,
   timeFormat,
   timeZone,
-  // recurringEventCount,
   users = [],
   seatsPerTimeSlot,
   weekStart = 0,
@@ -41,7 +40,6 @@ const SlotPicker = ({
   timeFormat: TimeFormat;
   timeZone?: string;
   seatsPerTimeSlot?: number;
-  recurringEventCount?: number;
   users?: string[];
   weekStart?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   ethSignature?: string;

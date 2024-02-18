@@ -10,6 +10,7 @@ import {
   Icon,
   NavigationBar,
   Screen,
+  Skeleton,
   Text,
   TouchableScale,
 } from '@components';
@@ -75,11 +76,9 @@ const ConfirmBookingScreen = () => {
 
         replaceScreen(APP_SCREEN.CONFIRM_PAYMENT, {
           appointmentId: appointment.id,
-          amount: appointment.payment[0].amount,
+          amount: appointment.payment.amount,
         });
       }
-
-      console.log('🚀 ~ file: index.tsx:71 ~ bookAppointment ~ res:', res);
     } catch (error) {
       console.log('🚀 ~ file: index.tsx:69 ~ bookAppointment ~ error:', error);
     } finally {
@@ -229,7 +228,11 @@ const ConfirmBookingScreen = () => {
               Tổng cộng
             </Text>
             <Text fontSize={18} fontWeight={'600'} lineHeight={22}>
-              {new Intl.NumberFormat().format(eventType?.price ?? 0)}VNĐ
+              {eventType ? (
+                `${new Intl.NumberFormat().format(eventType?.price ?? 0)}VNĐ`
+              ) : (
+                <Skeleton />
+              )}
             </Text>
           </Block>
           <Block style={styles.submitBtnContainer}>

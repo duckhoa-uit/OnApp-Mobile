@@ -1,2 +1,9 @@
-export const generatePaymentQrUrl = (appointmentId: number, amount: number) =>
-  `https://api.vietqr.io/image/970436-1014414697-zwqHyEp.jpg?accountName=DANG%20THI%20THU%20DUYEN&amount=${amount}&addInfo=PMONAPP${appointmentId}`;
+export const generateVietQrUrl = (order: { amount: number; id: number }) => {
+  const searchParams = new URLSearchParams({
+    accountName: 'Dang Thi Thu Duyen',
+    amount: `${order.amount}`,
+    addInfo: `ONAPP ${order.id}`,
+  });
+
+  return `https://api.vietqr.io/image/970422-0855269237-6u3V6Hx.jpg?${searchParams.toString()}`;
+};

@@ -20,6 +20,7 @@ const processDate = (
     return 'Invalid date';
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const formattedTime = parsedZone?.format(
     options?.withDefaultTimeFormat
       ? TimeFormat.TWELVE_HOUR
@@ -27,11 +28,11 @@ const processDate = (
   );
 
   return (
-    formattedTime +
-    ', ' +
+    // formattedTime +
+    // ', ' +
     dayjs(date as ConfigType)
       .toDate()
-      .toLocaleString(language, { dateStyle: 'full' })
+      .toLocaleString(language, { dateStyle: 'long' })
   );
 };
 

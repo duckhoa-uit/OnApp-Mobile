@@ -1,5 +1,5 @@
 APP_ENV="Prod"
-API_URL="https://cc/"
+API_URL="https://api.onapp.id.vn"
 APP_DISPLAY_NAME="Ổn App"
 VERSION_CODE="1"
 VERSION_NAME="1.0.0"

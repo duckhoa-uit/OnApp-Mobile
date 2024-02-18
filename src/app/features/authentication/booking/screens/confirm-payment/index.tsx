@@ -1,5 +1,4 @@
-import React, { memo, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import React, { memo, useMemo, useState } from 'react';
 
 import isEqual from 'react-fast-compare';
 
@@ -13,14 +12,16 @@ import {
 } from '@components';
 import { goBack, replaceScreen } from '@navigation/navigation-service';
 import { APP_SCREEN, RootRouteProps } from '@navigation/screen-types';
-import { useQueryPaymentQr } from '@networking/queries/payment/use-query-payment-qr';
 import { useQueryPaymentStatus } from '@networking/queries/payment/use-query-payment-status';
 import { useRoute } from '@react-navigation/native';
 import { useTheme } from '@theme';
 
 import { useConfirmBookingScreenStyle } from './style';
+import { generateVietQrUrl } from './utils';
 
 const ConfirmPaymentScreen = () => {
+  // const notifyOnChangeProps = useFocusNotifyOnChangeProps();
+
   const [clickFetched, setClickFetched] = useState(false);
 
   const theme = useTheme();
@@ -29,33 +30,48 @@ const ConfirmPaymentScreen = () => {
 
   const { appointmentId, amount } = route.params;
 
+  const QRImageUrl = useMemo(
+    () => generateVietQrUrl({ amount, id: appointmentId }),
+    [],
+  );
+
   const styles = useConfirmBookingScreenStyle();
 
-  const { data: isPaid, isLoading: isCheckingStatus } = useQueryPaymentStatus({
+  const { isLoading: isCheckingStatus, failureCount } = useQueryPaymentStatus({
     variables: {
       appointmentId,
     },
-    refetchInterval: 2000,
+    // notifyOnChangeProps,
     enabled: clickFetched,
-    onSuccess: data => {
+    onError() {
+      setClickFetched(false);
+    },
+    onSuccess: paid => {
       console.log(
         '🚀 ~ file: index.tsx:41 ~ ConfirmPaymentScreen ~ data:',
-        data,
+        paid,
       );
 
-      replaceScreen(APP_SCREEN.AUTHORIZE, {
-        screen: APP_SCREEN.APPOINTMENTS_STACK,
-        params: {
-          screen: APP_SCREEN.APPOINTMENTS,
-        },
-      });
+      if (paid) {
+        replaceScreen(APP_SCREEN.AUTHORIZE, {
+          screen: APP_SCREEN.APPOINTMENTS_STACK,
+          params: {
+            screen: APP_SCREEN.APPOINTMENTS,
+          },
+        });
+      }
     },
+    refetchOnWindowFocus: false,
   });
 
-  const { data, isLoading } = useQueryPaymentQr({
-    variables: { appointmentId, amount },
-    keepPreviousData: true,
-  });
+  const handleBypass = () => {
+    replaceScreen(APP_SCREEN.AUTHORIZE, {
+      screen: APP_SCREEN.APPOINTMENTS_STACK,
+      params: {
+        screen: APP_SCREEN.APPOINTMENTS,
+      },
+    });
+  };
 
   return (
     <Block block justifyContent="center" paddingTop={0}>
@@ -67,32 +83,19 @@ const ConfirmPaymentScreen = () => {
         <NavigationBar callback={goBack} title="Thanh Toán" />
 
         <Block paddingHorizontal={20} style={styles.body}>
-          {isLoading ? (
-            <Block style={{ width: 360, height: 360 }}>
-              <ActivityIndicator />
-            </Block>
-          ) : null}
-          {data?.qrDataURL ? (
-            <Image
-              resizeMode={'contain'}
-              source={{
-                uri: data.qrDataURL,
-              }}
-              style={{ width: 360, height: 360 }}
-            />
-          ) : null}
-          {/* <Text>{JSON.stringify(data)}</Text> */}
+          <Image
+            resizeMode={'contain'}
+            source={{
+              uri: QRImageUrl,
+            }}
+            style={{ width: 360, height: 360 }}
+          />
         </Block>
 
-        <Block
-          paddingBottom={20}
-          paddingHorizontal={20}
-          style={styles.submitArea}
-        >
+        <Block paddingHorizontal={20} style={styles.submitArea}>
           <Block style={styles.submitBtnContainer}>
             <TouchableScale
               containerStyle={styles.submitBtn}
-              // disabled={isCheckingStatus}
               onPress={() => !clickFetched && setClickFetched(true)}
             >
               <Text
@@ -101,11 +104,27 @@ const ConfirmPaymentScreen = () => {
                 fontWeight={'600'}
                 lineHeight={17}
               >
-                {clickFetched ? 'Loading...' : 'Kiểm tra'}
+                {failureCount}
+                {clickFetched && isCheckingStatus ? 'Loading...' : 'Kiểm tra'}
               </Text>
             </TouchableScale>
           </Block>
         </Block>
+
+        {failureCount > 5 && (
+          <Block paddingHorizontal={20} style={styles.submitArea}>
+            <Block style={styles.submitBtnContainer}>
+              <TouchableScale
+                containerStyle={styles.checkLaterBtn}
+                onPress={handleBypass}
+              >
+                <Text fontSize={14} fontWeight={'600'} lineHeight={17}>
+                  Kiểm tra sau
+                </Text>
+              </TouchableScale>
+            </Block>
+          </Block>
+        )}
       </Screen>
     </Block>
   );

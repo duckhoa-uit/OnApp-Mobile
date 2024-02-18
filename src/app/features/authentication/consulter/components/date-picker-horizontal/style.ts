@@ -1,9 +1,13 @@
+/* eslint-disable no-nested-ternary */
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { ColorDefault } from '@theme/color';
 
-export const useDatePickerHorizontalStyle = (isActive: boolean) => {
+export const useDatePickerHorizontalStyle = (
+  isActive: boolean,
+  disabled?: boolean,
+) => {
   // state
   // const theme = useTheme();
 
@@ -15,10 +19,14 @@ export const useDatePickerHorizontalStyle = (isActive: boolean) => {
           padding: 12,
           borderRadius: 10,
           borderWidth: 1,
-          borderColor: ColorDefault.line,
+          borderColor: disabled ? ColorDefault.border : ColorDefault.line,
           height: 72,
           width: 56,
-          backgroundColor: isActive ? ColorDefault.primary : '#fff',
+          backgroundColor: isActive
+            ? ColorDefault.primary
+            : disabled
+            ? ColorDefault.border
+            : '#fff',
         },
         dateString: {
           fontSize: 10,
@@ -33,6 +41,6 @@ export const useDatePickerHorizontalStyle = (isActive: boolean) => {
           color: isActive ? '#fff' : ColorDefault.text,
         },
       }),
-    [isActive],
+    [isActive, disabled],
   );
 };

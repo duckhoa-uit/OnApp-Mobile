@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo, useRef } from 'react';
 import {
   FlatList,
   ListRenderItem,
@@ -32,7 +32,7 @@ const DateCard = memo(
     isActive = false,
     onPress,
   }: DateCardProps) => {
-    const styles = useDatePickerHorizontalStyle(isActive);
+    const styles = useDatePickerHorizontalStyle(isActive, disabled);
 
     return (
       <Button
@@ -76,21 +76,21 @@ export type DatePickerProps = {
 const DatePickerHorizontal = ({
   weekStart = 0,
   locale,
+  // month,
   // onMonthChange,
   minDate = dayjs.utc(),
   excludedDates = [],
   selected,
-  // month,
   ...props
 }: DatePickerProps & {
   browsingDate: Dayjs;
   weekStart: number;
 }) => {
+  const listRef = useRef<FlatList>(null);
+
   const { width: screenWidth } = useWindowDimensions();
 
   const browsingDate = props.browsingDate || dayjs().startOf('month');
-
-  const weekdayOfFirst = browsingDate.day();
 
   const currentDate = minDate.utcOffset(browsingDate.utcOffset());
 
@@ -122,21 +122,25 @@ const DatePickerHorizontal = ({
     ? availableDates(props.includedDates)
     : props.includedDates;
 
-  const days: (Dayjs | null)[] = Array(
-    (weekdayOfFirst - weekStart + 7) % 7,
-  ).fill(null);
+  const nonNullableDays = useMemo(() => {
+    const weekdayOfFirst = browsingDate.day();
 
-  for (
-    let day = 1, dayCount = daysInMonth(browsingDate);
-    day <= dayCount;
-    day++
-  ) {
-    const date = browsingDate.set('date', day);
+    const days: (Dayjs | null)[] = Array(
+      (weekdayOfFirst - weekStart + 7) % 7,
+    ).fill(null);
 
-    days.push(date);
-  }
+    for (
+      let day = dayjs().date(), dayCount = daysInMonth(browsingDate);
+      day <= dayCount;
+      day++
+    ) {
+      const date = browsingDate.set('date', day);
 
-  const nonNullableDays = days.filter(notEmpty);
+      days.push(date);
+    }
+
+    return days.filter(notEmpty);
+  }, [browsingDate, weekStart]);
 
   // TODO: support switch to another month
   // using month for display current month
@@ -150,10 +154,10 @@ const DatePickerHorizontal = ({
     ({ item }) => (
       <DateCard
         date={item}
-        // disabled={
-        //   (includedDates && !includedDates.includes(yyyymmdd(item))) ||
-        //   excludedDates.includes(yyyymmdd(item))
-        // }
+        disabled={
+          (includedDates?.length && !includedDates.includes(yyyymmdd(item))) ||
+          excludedDates.includes(yyyymmdd(item))
+        }
         isActive={selected ? yyyymmdd(selected) === yyyymmdd(item) : false}
         locale={locale}
         onPress={props.onChange}
@@ -178,6 +182,7 @@ const DatePickerHorizontal = ({
       decelerationRate={0}
       horizontal={true}
       keyExtractor={keyExtractor}
+      ref={listRef}
       renderItem={renderItem}
       showsHorizontalScrollIndicator={false}
       snapToAlignment={'start'}
