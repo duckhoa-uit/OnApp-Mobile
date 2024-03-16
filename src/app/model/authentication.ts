@@ -12,6 +12,7 @@ export type LoginApiResponse = ApiBaseResponse<{
 }>;
 
 export type FormRegisterType = {
+  username: string;
   email: string;
   name: string;
   password: string;

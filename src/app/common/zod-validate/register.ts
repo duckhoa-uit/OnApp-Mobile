@@ -13,6 +13,7 @@ export const registerValidation = z.object<ZodShape<FormRegisterType>>({
       }),
     )
     .email(),
+  username: z.string().min(1, 'Password is required'),
   name: z.string().min(1, 'Password is required'),
   password: z.string().min(1, 'Password is required'),
 });

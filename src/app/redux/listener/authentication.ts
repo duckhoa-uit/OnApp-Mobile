@@ -30,6 +30,8 @@ takeLatestListeners(true)({
 
     if (validResponse(response)) {
       // TODO: do something when login success
+      console.log('🚀 ~ effect: ~ response.data.data:', response.data.data);
+
       const { access_token } = response.data.data;
 
       const { streamchat_token } = response.data.data;
@@ -45,6 +47,8 @@ takeLatestListeners(true)({
       const userResp = await NetWorkService.Get<UserApiGetResponse>({
         url: ApiConstants.GET_ME,
       });
+
+      console.log('🚀 ~ effect: ~ userResp:', userResp);
 
       if (!userResp) {
         return;

@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { VectorIcon } from '@assets/vector-icon/vector-icon';
-import ChatContextProvider from '@features/authentication/chat/context';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 

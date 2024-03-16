@@ -29,11 +29,12 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
   // render
   return (
     <FormProvider {...formMethod}>
-      <Input<FormRegisterType> name={'email'} label={'Email'} />
-      <Input<FormRegisterType> name={'name'} label={'Họ tên'} />
+      <Input<FormRegisterType> label={'Email'} name={'email'} />
+      <Input<FormRegisterType> label={'Username'} name={'username'} />
+      <Input<FormRegisterType> label={'Họ tên'} name={'name'} />
       <Input<FormRegisterType>
-        name={'password'}
         label={'Mật khẩu'}
+        name={'password'}
         rightChildren={
           <Icon
             color="#777"
@@ -44,12 +45,12 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         secureTextEntry={!showPassword}
       />
 
-      <Block paddingVertical={15} middle direction={'row'}>
+      <Block direction={'row'} middle paddingVertical={15}>
         <TouchableScale
-          onPress={onSubmitKey}
           containerStyle={styles.submitBtnContainer}
+          onPress={onSubmitKey}
         >
-          <Block padding={5} color={'#bbb'} style={styles.registerButton}>
+          <Block color={'#bbb'} padding={5} style={styles.registerButton}>
             <Text style={styles.registerText}>Đăng ký</Text>
           </Block>
         </TouchableScale>

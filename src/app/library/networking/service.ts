@@ -21,7 +21,8 @@ import {
 
 const tokenKeyHeader = 'authorization';
 
-let refreshTokenRequest: Promise<string | null> | null = null;
+const refreshTokenRequest: Promise<string | null> | null = null;
+
 const AxiosInstance = Axios.create({});
 
 AxiosInstance.interceptors.response.use(
@@ -29,32 +30,33 @@ AxiosInstance.interceptors.response.use(
   async function (error) {
     const originalRequest = error.config;
 
-    if (
-      error &&
-      error.response &&
-      (error.response.status === 403 || error.response.status === 401) &&
-      !originalRequest._retry
-    ) {
-      originalRequest._retry = true;
+    // FIXME: remove after implement refresh token function in backend side
+    // if (
+    //   error &&
+    //   error.response &&
+    //   (error.response.status === 403 || error.response.status === 401) &&
+    //   !originalRequest._retry
+    // ) {
+    //   originalRequest._retry = true;
 
-      refreshTokenRequest = refreshTokenRequest
-        ? refreshTokenRequest
-        : refreshToken();
+    //   refreshTokenRequest = refreshTokenRequest
+    //     ? refreshTokenRequest
+    //     : refreshToken();
 
-      const newToken = await refreshTokenRequest;
+    //   const newToken = await refreshTokenRequest;
 
-      refreshTokenRequest = null;
+    //   refreshTokenRequest = null;
 
-      if (newToken === null) {
-        return Promise.reject(error);
-      }
+    //   if (newToken === null) {
+    //     return Promise.reject(error);
+    //   }
 
-      dispatch(appActions.setToken(newToken));
+    //   dispatch(appActions.setToken(newToken));
 
-      originalRequest.headers[tokenKeyHeader] = newToken;
+    //   originalRequest.headers[tokenKeyHeader] = newToken;
 
-      return AxiosInstance(originalRequest);
-    }
+    //   return AxiosInstance(originalRequest);
+    // }
 
     return Promise.reject(error);
   },
@@ -86,7 +88,7 @@ function Request<T = Record<string, unknown>>(config: ParamsNetwork) {
     timeout: TIME_OUT,
     headers: {
       'Content-Type': 'application/json',
-      [tokenKeyHeader]: token ?? '',
+      [tokenKeyHeader]: token ? `Bearer ${token}` : '',
     },
     paramsSerializer: params => {
       return qs.stringify(params);

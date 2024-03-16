@@ -1,5 +1,5 @@
 APP_ENV="Dev"
-API_URL="https://api.onapp.id.vn"
+API_URL="http://10.0.2.2:8765"
 APP_DISPLAY_NAME="Ổn App"
 VERSION_CODE="1"
 VERSION_NAME="1.0.0"

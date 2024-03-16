@@ -8,7 +8,7 @@
     "lint": "eslint  index.js ./scripts/*.ts  ./src/** --ext .js,.ts,.tsx",
     "start": "npx react-native start --reset-cache",
     "format": "prettier --write **/*.{ts,tsx,js,json,md}",
-    "splash": "yarn react-native generate-bootsplash splash/splash.png --background-color=0E1019 --logo-width=150  --assets-path=assets --flavor=main",
+    "splash": "yarn react-native generate-bootsplash splash/splash.png --background-color=FFFFFF --logo-width=150  --assets-path=assets --flavor=main",
     "type:check": "yarn tsc --noEmit --skipLibCheck",
     "app-icon": "npx rn-ml appicon -s appicon/appicon.png",
     "app-icon:dev": "npx rn-ml appicon -s appicon/appicon-dev.png -f dev -icn AppIcon-Dev",

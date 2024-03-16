@@ -32,7 +32,7 @@ const ConfirmPaymentScreen = () => {
 
   const QRImageUrl = useMemo(
     () => generateVietQrUrl({ amount, id: appointmentId }),
-    [],
+    [amount, appointmentId],
   );
 
   const styles = useConfirmBookingScreenStyle();
@@ -104,7 +104,6 @@ const ConfirmPaymentScreen = () => {
                 fontWeight={'600'}
                 lineHeight={17}
               >
-                {failureCount}
                 {clickFetched && isCheckingStatus ? 'Loading...' : 'Kiểm tra'}
               </Text>
             </TouchableScale>

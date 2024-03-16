@@ -22,11 +22,6 @@ takeLatestListeners()({
 
     const streamchatToken = loadString(STORAGE_STREAMCHAT_TOKEN);
 
-    console.log(
-      '🚀 ~ file: app.ts:24 ~ effect: ~ streamchatToken:',
-      streamchatToken,
-    );
-
     if (typeof token === 'string') {
       listenerApi.dispatch(appActions.setToken(token));
 

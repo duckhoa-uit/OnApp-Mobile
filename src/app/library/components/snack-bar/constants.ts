@@ -1,4 +1,4 @@
-const DURATION_HIDE = 1000;
+const DURATION_HIDE = 2500;
 
 const DURATION_ANIMATED = 500;
 

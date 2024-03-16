@@ -2,6 +2,7 @@ const API_VERSION = '/api/v1/';
 
 const ApiEndPoint = {
   LOGIN: 'auth/login',
+  REGISTER: 'auth/register',
   REFRESH_TOKEN: '',
   GET_ME: 'users/me',
   GET_CONSULTER_LIST: 'users/consulter',
